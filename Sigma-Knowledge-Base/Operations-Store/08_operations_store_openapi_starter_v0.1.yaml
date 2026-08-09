@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Operations Store API
+  version: 0.1.0
+  description: Starter contract; field vocabularies and security scheme require team finalization.
+paths:
+  /v1/operations:
+    post:
+      summary: Create canonical Operation
+      responses:
+        '201': {description: Created}
+  /v1/operations/{operation_id}:
+    get:
+      summary: Get canonical Operation
+      parameters:
+        - in: path
+          name: operation_id
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Operation}
+    patch:
+      summary: Update owned Operation state
+      parameters:
+        - in: path
+          name: operation_id
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Updated}
+  /v1/operations/{operation_id}/context:
+    get:
+      summary: Single Operation Fetch
+      parameters:
+        - in: path
+          name: operation_id
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Operation context}
+  /v1/operations/{operation_id}/snapshots:
+    get:
+      summary: List snapshots
+      responses:
+        '200': {description: Snapshot list}
+    post:
+      summary: Capture decision/state snapshot
+      responses:
+        '201': {description: Snapshot created}

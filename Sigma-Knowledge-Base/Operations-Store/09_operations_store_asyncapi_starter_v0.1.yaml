@@ -1,0 +1,48 @@
+asyncapi: 2.6.0
+info:
+  title: Operations Store Domain Events
+  version: 0.1.0
+channels:
+  operations.operation.changed:
+    publish:
+      message:
+        $ref: '#/components/messages/OperationChanged'
+  operations.external_projection.changed:
+    publish:
+      message:
+        $ref: '#/components/messages/ExternalProjectionChanged'
+  operations.decision_snapshot.created:
+    publish:
+      message:
+        $ref: '#/components/messages/DecisionSnapshotCreated'
+components:
+  messages:
+    OperationChanged:
+      payload:
+        type: object
+        required: [event_id, operation_id, occurred_at, version]
+        properties:
+          event_id: {type: string}
+          operation_id: {type: string}
+          occurred_at: {type: string, format: date-time}
+          version: {type: string}
+          changed_fields: {type: array, items: {type: string}}
+    ExternalProjectionChanged:
+      payload:
+        type: object
+        required: [event_id, operation_id, source_system, source_entity_id, source_updated_at]
+        properties:
+          event_id: {type: string}
+          operation_id: {type: string}
+          source_system: {type: string}
+          source_entity_id: {type: string}
+          source_updated_at: {type: string, format: date-time}
+    DecisionSnapshotCreated:
+      payload:
+        type: object
+        required: [event_id, operation_id, snapshot_id, captured_at]
+        properties:
+          event_id: {type: string}
+          operation_id: {type: string}
+          snapshot_id: {type: string}
+          captured_at: {type: string, format: date-time}
