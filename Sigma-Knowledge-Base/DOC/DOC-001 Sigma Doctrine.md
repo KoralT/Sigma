@@ -1,15 +1,3 @@
-KB-000  Sigma Knowledge Base Guide
-KB-001  Sigma Glossary
-
-DOC-001 Sigma Doctrine
-
-OM-001 Sigma Operating Model
-
-PA-001 Sigma Platform Architecture
-
-PR-001 Sigma Product Portfolio
-
-RS-001 Sigma Discovery & Research
 ---
 id: DOC-001
 title: Sigma Doctrine

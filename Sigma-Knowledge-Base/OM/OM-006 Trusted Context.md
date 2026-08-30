@@ -1,5 +1,5 @@
 ---
-id: OM-005
+id: OM-006
 title: Trusted Context
 version: 1.0-draft
 status: Working Draft
