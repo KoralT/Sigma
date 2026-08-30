@@ -6,10 +6,27 @@
 
 ---
 
+## Sigma vs Zira — system vs experience layer
+
+> `Sigma` and `Zira` are **not** synonyms; do not use "Zira / Sigma" as an interchangeable label. See [DECISION-LOG D-17](05-DECISIONS/DECISION-LOG.md).
+
+### Sigma
+The wider **system / capability ecosystem**: the domain and shared capabilities that establish trusted facts, computation, synthesis and reusable organizational capabilities — e.g. Operations Store, Geography / Spatial Intelligence, Context & Meaning, and shared capabilities.
+
+### Zira
+**Sigma's product / experience layer** for users. Zira contains the user-facing modules and experiences (current examples: **Commander Space**, **Operations Management**).
+
+**Boundaries:**
+- Operations Store, Geography / Spatial Intelligence, and Context & Meaning are **Sigma capabilities**, *not* Zira modules.
+- Commander Space and Operations Management are **modules inside Zira**.
+- Commander Space does **not** contain Operations Management.
+
+---
+
 ## Naming — canonical terms and their aliases
 
 ### Commander Space
-The canonical name for Sigma's experience / decision / product layer, through which relevant understanding becomes human awareness, decision, and action. Defined in PR-014. **This is the term to use.**
+The current name of the user-facing **module inside Zira** for the personal/commander experience — awareness, attention, investigation, decision, action, relevant approvals, and knowledge continuity. It is **not** the whole Sigma experience layer (that is **Zira**) and does **not** contain every capability. Defined in PR-014. **This is the term to use.**
 
 ### Commander Experience *(deprecated alias)*
 Legacy terminology drift for **Commander Space**. Appears in the Context & Meaning and Geography document packs to refer to the same experience layer. It is **not** a separate product or domain. Retained here only so older documents remain interpretable; new material should say *Commander Space*.
@@ -40,14 +57,25 @@ The older product-level concept in PR-017, now archived (`99-ARCHIVE/Historical/
 ## Meaning vs Signal — distinct (not synonyms)
 
 ### Operational Meaning
-An organizational / platform **concept and capability**: turning operational signals into shared, meaningful operational understanding. Concept paper: OM-004. *(KB-001 sense: "the shared interpretation assigned to one or more operational signals.")*
+The **broader capability/concept**: translating trusted context into operationally relevant meaning. Concept paper: OM-004.
 
 ### Operational Signal
-Two definitions for this term currently exist in the repository and **conflict**; neither has been designated canonical:
-- **Legacy definition (observed in KB-001):** "a raw observation, event, or data point generated during operational activity … facts before interpretation."
-- **Current C&M contract definition (observed in the Operational Signal Schema v0.1):** "a traceable statement of operational meaning derived from domain facts in context," explicitly **not** a raw event and **not** a commander-specific recommendation.
+The **concrete, evidence-backed output of Context & Meaning**: *an evidence-backed statement of operational meaning produced by C&M.* It is **not** a raw event, a raw observation, or an uninterpreted data point — raw source events/observations remain distinct factual **inputs**.
 
-> **Recorded conflict:** these two definitions are incompatible (raw pre-interpretation fact vs. evidence-backed meaning statement). Per owner decision, *Operational Signal* and *Operational Meaning* are **not synonymous**. The conflict between the two *Operational Signal* definitions above **remains unresolved**; no single definition is selected as canonical here.
+> **Resolution (owner decision, see [DECISION-LOG D-19](05-DECISIONS/DECISION-LOG.md)):** the current authoritative definition of *Operational Signal* is the C&M evidence-backed statement above. The **legacy KB-001 definition** ("a raw observation, event, or data point … facts before interpretation") is **stale / superseded**. *Operational Signal* (concrete C&M output) and *Operational Meaning* (broader capability) remain **distinct** and are not used interchangeably.
+
+---
+
+## Geography — product capabilities and spatial outputs
+
+### Geography product-capability model (current)
+The current **product-level** capability model for Geography / Spatial Intelligence is **Spatialize · Resolve · Relate · Reconstruct · Qualify**. This is the **current product model — not historical.** It need not map 1:1 onto the lower-level spatial-operation enum exposed by the Geography technical contract; product capabilities and API operations are different abstraction levels. See [DECISION-LOG D-21](05-DECISIONS/DECISION-LOG.md).
+
+### Spatial Evidence vs SpatialResult
+- **Spatial Evidence** — the **product / business** abstraction: factual spatial evidence produced by Geography for consumption by Context & Meaning or another authorized consumer.
+- **SpatialResult** — the **technical / contract** representation through which Geography returns that result.
+
+These are two abstraction levels of the same thing, **not** competing/drifting terms.
 
 ---
 

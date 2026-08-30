@@ -6,7 +6,8 @@
 >
 > - Document **IDs are stable** traceability identifiers. Newer domain documents were authored without IDs and are listed by title.
 > - **`ARC-001` has been removed as a required document.** It was never created; its entry-architecture role is served by [START-HERE.md](START-HERE.md), the Platform Architecture document (`01-FOUNDATIONS/Platform-Architecture.md`), and this registry.
-> - **Knowledge status ≠ delivery status.** Delivery is tracked only in [CURRENT-STATE.md](CURRENT-STATE.md). "Foundational" classification does **not** imply completeness or canonical authority.
+> - **Sigma vs Zira:** `Sigma` is the wider capability ecosystem; **Zira** is Sigma's product/experience layer, containing user-facing modules such as **Commander Space** and **Operations Management**. Operations Store, Geography / Spatial Intelligence and Context & Meaning are **Sigma capabilities, not Zira modules** (see [DECISION-LOG D-17](05-DECISIONS/DECISION-LOG.md)).
+> - **Knowledge status ≠ delivery status.** Delivery is tracked only in [CURRENT-STATE.md](CURRENT-STATE.md); the current delivery baseline is **GREENFIELD / SETUP REQUIRED** ([D-20](05-DECISIONS/DECISION-LOG.md)) — documentation, contracts, ADRs, schemas and Golden-E2E definitions are **not** implementation evidence. "Foundational" classification does **not** imply completeness or canonical authority.
 > - The **Operations Store DOCX package has NOT been converted** — it remains under `Operations-Store/` pending Batch 2B.
 > - Unresolved canonical conflicts are listed openly in the final section rather than hidden.
 
@@ -50,6 +51,7 @@ Each migrated domain has a `README.md` describing what it owns, does not own, an
 | ID | Document | Current Path | Concept / Domain | Knowledge Status | Role |
 |--|--|--|--|--|--|
 | — | Operations domain README | 02-DOMAINS/Operations/README.md | Operations | WORKING | Navigation |
+| — | Operations Management | 02-DOMAINS/Operations/Product/Operations-Management.md | Operations Management (Zira module) | WORKING | Current product direction — module inside Zira; uses Operations Store as backbone; distinct from the Store and from Commander Space (D-18) |
 | — | Operations Store — OpenAPI starter | 02-DOMAINS/Operations/Contracts/operations-store-openapi-starter-v0.1.yaml | Ops Store REST contract | WORKING | Candidate |
 | — | Operations Store — AsyncAPI starter | 02-DOMAINS/Operations/Contracts/operations-store-asyncapi-starter-v0.1.yaml | Ops Store event contract | WORKING | Candidate |
 | CAT-010 | Operations Repository | 02-DOMAINS/Operations/Knowledge/Operations-Repository.md | Operations knowledge model | WORKING | **Broader/earlier model; not canonical**; does not override Operations Store contracts |
@@ -77,15 +79,17 @@ Each migrated domain has a `README.md` describing what it owns, does not own, an
 | — | Context & Meaning — HLD | 02-DOMAINS/Context-and-Meaning/Architecture/Context-and-Meaning-HLD.md | C&M (arch) | WORKING | Candidate |
 | — | Context & Meaning — ADR | 02-DOMAINS/Context-and-Meaning/Architecture/Context-and-Meaning-ADR.md | C&M decisions | VALIDATED | Accepted baseline decisions |
 | — | Context & Meaning — Input & Source Contract | 02-DOMAINS/Context-and-Meaning/Contracts/Context-and-Meaning-Input-Source-Contract.md | C&M input contract | WORKING | Candidate |
-| — | Operational Signal Schema v0.1 | 02-DOMAINS/Context-and-Meaning/Contracts/Operational-Signal-Schema-v0.1.md | **Operational Signal** (contract) | WORKING | Candidate — *not* Operational Meaning |
+| — | Operational Signal Schema v0.1 | 02-DOMAINS/Context-and-Meaning/Contracts/Operational-Signal-Schema-v0.1.md | **Operational Signal** (contract) | WORKING | Candidate — current authoritative *Operational Signal* definition (D-19); *not* Operational Meaning |
 | — | Context & Meaning — Golden E2E / Phase-1 | 02-DOMAINS/Context-and-Meaning/Delivery/Context-and-Meaning-Golden-E2E-Phase1.md | Domain acceptance contract | WORKING | Candidate |
 
-## 03 — Experience › Commander Space (canonical name)
+## 03 — Zira (experience layer) › Commander Space (module inside Zira)
+
+> **Zira** is Sigma's product/experience layer; **Commander Space** is a module inside it (Operations Management is another). Commander Space is **not** the whole experience layer and does not contain every capability (D-17). *(Folder is `03-EXPERIENCE/` from the earlier migration; not renamed.)*
 
 | ID | Document | Current Path | Concept / Domain | Knowledge Status | Role |
 |--|--|--|--|--|--|
 | — | Commander Space README | 03-EXPERIENCE/Commander-Space/README.md | Commander Space | WORKING | Navigation |
-| PR-014 | Commander Space | 03-EXPERIENCE/Commander-Space/Commander-Space.md | Commander Space | WORKING | **Canonical — Commander Space** |
+| PR-014 | Commander Space | 03-EXPERIENCE/Commander-Space/Commander-Space.md | Commander Space | WORKING | **Canonical name — Commander Space** (module inside Zira) |
 | PR-015 | Headquarters Workspace | 03-EXPERIENCE/Commander-Space/Headquarters/Headquarters-Workspace.md | Headquarters Workspace | WORKING | Candidate |
 | PR-016 | My Space *(former: Personal Workspace)* | 03-EXPERIENCE/Commander-Space/My-Space/My-Space.md | My Space | WORKING | Candidate; ID PR-016 retained, `former_name: Personal Workspace` |
 
@@ -115,6 +119,7 @@ Each migrated domain has a `README.md` describing what it owns, does not own, an
 
 | ID | Document | Current Path | Concept / Domain | Knowledge Status | Role |
 |--|--|--|--|--|--|
+| — | Execution Model | 07-EXECUTION/EXECUTION-MODEL.md | Execution model | WORKING | Canonical human-readable execution model (summary of the handoff XLSX) |
 | — | Operational Data Foundation (annual initiative) | 07-EXECUTION/Annual-Plans/Operational-Data-Foundation.md | Cross-domain annual plan (Ops+Geo) | WORKING | Candidate (dirty formatting; cleanup pending) |
 | — | Final Execution Handoff 2026–2027 | 07-EXECUTION/Handoffs/SIGMA-FINAL-EXECUTION-HANDOFF-2026-2027.xlsx | Execution handoff | WORKING | Candidate (binary, unreviewed) |
 
@@ -132,9 +137,9 @@ Each migrated domain has a `README.md` describing what it owns, does not own, an
 ## Unresolved canonical conflicts (exposed, not resolved)
 
 1. **Operations Store vs Operations Repository (CAT-010) vs Operational Repositories (PR-017)** — kept **separate**. Owner direction: Operations Store is the operational system of record (canonical role, contents pending DOCX conversion); CAT-010 is a broader/earlier operations knowledge model (WORKING, not canonical, does not override Store contracts); PR-017 is archived historical product framing. Full semantic reconciliation between Operations Store and CAT-010 is still pending.
-2. **Commander Space vs "Commander Experience"** — same experience layer; **Commander Space is canonical**; "Commander Experience" is legacy drift in the Context & Meaning and Geography packs. Historical documents are not rewritten.
+2. **Commander Space vs "Commander Experience"** — the same commander-facing **module inside Zira**; **Commander Space is canonical**; "Commander Experience" is legacy drift in the Context & Meaning and Geography packs. Commander Space is not the whole experience layer (that is Zira — D-17). Historical documents are not rewritten.
 3. **Personal Workspace vs My Space** — **My Space** is the current name; PR-016 remains the stable ID (`former_name: Personal Workspace` recorded).
-4. **Operational Meaning (OM-004) vs Operational Signal (C&M schema)** — **distinct** (capability vs concrete output/contract); relationship documented, not merged. Two conflicting definitions of *Operational Signal* (KB-001 legacy vs C&M contract) remain unresolved (see GLOSSARY).
+4. **Operational Meaning (OM-004) vs Operational Signal (C&M schema)** — **distinct** (broader capability vs concrete evidence-backed C&M output); not merged. **RESOLVED (D-19):** the *Operational Signal* definition conflict is settled — the C&M evidence-backed statement is authoritative; the legacy **KB-001** raw-data definition is **stale/superseded** (see GLOSSARY). Retained here for traceability.
 5. **Entity Model (PA-010) vs Operations Store schema** — PA-010 provides cross-cutting conceptual entity semantics; Operations Store owns its own canonical operational schema. Any conflict is to be exposed, not silently reconciled.
 6. **Foundational shells** — DOC-001, OM-001, PR-001, RS-001, RS-003 remain placeholders with **no canonical authority** despite classification (not moved this batch).
 7. **ARC-001** — **does not exist and will not be created.** Active-document references were removed in Batch 2A: DM-001, PA-010, and PA-011 now reference `01-FOUNDATIONS/Platform-Architecture.md` in their References sections instead. Remaining ARC-001 mentions live only in the legacy `DOCUMENT_REGISTRY.md` and the historical `Legacy-Repository-Catalog.md` (CAT-001), retained for traceability and clearly historical. No active document depends on ARC-001.

@@ -9,7 +9,7 @@ All decisions dated **2026-08-30** (knowledge-base refactor, Phase 1 → Batch 1
 ---
 
 ### D-01 — Commander Space is the canonical experience/product name
-- **Decision:** "Commander Space" is canonical. "Commander Experience" is terminology drift referring to the same experience layer, not a separate product or domain.
+- **Decision:** "Commander Space" is canonical. "Commander Experience" is terminology drift referring to the same commander-facing module, not a separate product or domain. *(Commander Space is a module inside Zira, not the whole experience layer — refined by D-17.)*
 - **Rationale:** Two names for one layer were found across the repository (PR-014 uses "Commander Space"; the newer Context & Meaning and Geography packs use "Commander Experience"), with no explicit rename recorded.
 - **Implications:** Navigation and newly authored text use "Commander Space." Historical documents are **not** rewritten yet; the alias is recorded in the glossary and registry.
 - **Affected:** Commander Space concept; PR-014/015/016/017; Context & Meaning 01/02/03/05/06; Geography 01/02/03.
@@ -104,6 +104,40 @@ All decisions dated **2026-08-30** (knowledge-base refactor, Phase 1 → Batch 1
 - **Decision:** CAT-001 Repository Catalog → `06-DISCOVERY/Evidence/Legacy-Repository-Catalog.md`, knowledge status **HISTORICAL**. Not merged in this batch.
 - **Rationale:** Useful evidence of the previous repository taxonomy; must not define V2 navigation or current architecture.
 - **Affected:** CAT-001.
+
+---
+
+## Phase 3B / 3C — Owner Truth decisions (2026-08-30)
+
+### D-17 — Sigma vs Zira: system ecosystem vs product/experience layer
+- **Decision:** **Sigma** is the wider system / capability ecosystem (domain and shared capabilities: Operations Store, Geography / Spatial Intelligence, Context & Meaning, shared capabilities). **Zira** is Sigma's **product / experience layer** for users and contains the user-facing modules. **Commander Space** and **Operations Management** are modules inside Zira. **Operations Store, Geography / Spatial Intelligence, and Context & Meaning are Sigma capabilities, not Zira modules.** Commander Space does **not** contain Operations Management. `Zira` and `Sigma` are **not** synonyms — do not use "Zira / Sigma" as an interchangeable label.
+- **Rationale:** Earlier drafts conflated Zira and Sigma; the owner clarified the boundary.
+- **Implications:** Refines D-01 (Commander Space is a module inside Zira, not the whole experience layer). `CURRENT-STATE.md`, `Operations-Management.md`, GLOSSARY and this registry reflect this boundary.
+- **Affected:** CURRENT-STATE; Operations Management; Commander Space; GLOSSARY; DOCUMENT-REGISTRY.
+
+### D-18 — Standalone GANTTIT → Operations Management module inside Zira
+- **Decision:** The standalone **GANTTIT** product direction is discontinued; the capability is moving to the **Operations Management** module inside **Zira**. Operations Management remains **distinct from Operations Store** and **from Commander Space**. This is a **product-direction** decision, **not** a claim about the current operational availability or shutdown state of any existing system.
+- **Rationale:** Discovery identified low/insufficient adoption, high operational friction, continued reliance on slide-based workarounds, and unnecessary standalone complexity. The current direction is a simpler, integrated Zira module (Flat as default view, basic Gantt, Operation Page, create/edit Operations & Activities).
+- **Implications:** New product document `02-DOMAINS/Operations/Product/Operations-Management.md`. No dates or delivery status are implied (see D-20).
+- **Affected:** Operations Management; GANTTIT (superseded direction).
+
+### D-19 — Operational Signal definition resolved (KB-001 legacy is stale)
+- **Decision:** The current authoritative definition is: **Operational Signal = an evidence-backed statement of operational meaning produced by Context & Meaning.** It is **not** a raw event, a raw observation, or an uninterpreted data point (raw source events/observations remain distinct factual inputs). **Operational Meaning** remains the broader capability/concept; **Operational Signal** is the concrete evidence-backed C&M output. They stay **distinct**.
+- **Rationale:** C&M ADR-01 + owner decision. Resolves the open item flagged in D-06.
+- **Implications:** The **legacy KB-001 definition** (Operational Signal as raw data point) is **stale / superseded**. GLOSSARY updated accordingly.
+- **Affected:** GLOSSARY; OM-004; C&M Operational Signal Schema; KB-001 (legacy).
+
+### D-20 — Current delivery baseline is GREENFIELD / SETUP REQUIRED
+- **Decision:** All major current Sigma capability areas require **GREENFIELD / SETUP REQUIRED**: Operations Store, Operations Management, Geography / Spatial Intelligence, Context & Meaning, and Zira / Commander Space (and its product modules). Documentation, prototypes, contracts, ADRs, schemas and Golden-E2E definitions are **not** implementation evidence.
+- **Rationale:** No code/test/deployment/pilot evidence exists in the repository (extends D-09).
+- **Implications:** Do **not** convert this baseline into LIVE / PILOT / BUILDING; use a more specific delivery status only where explicit implementation evidence exists. `CURRENT-STATE.md` records this baseline.
+- **Affected:** All capability areas; CURRENT-STATE.
+
+### D-21 — Geography product-capability model is current (not historical)
+- **Decision:** The Geography product-capability model — **Spatialize · Resolve · Relate · Reconstruct · Qualify** — is the **current product-level model** and must **not** be classified as historical merely because the technical contract exposes a lower-level spatial-operation enum. **Spatial Evidence** = product/business abstraction; **SpatialResult** = technical/contract representation. Product capabilities and API operations are different abstraction levels (no required 1:1 mapping).
+- **Rationale:** Owner clarification; supersedes the Phase-3A reconciliation report's tentative "historical" reading of these verbs.
+- **Implications:** GLOSSARY records the current product model; control-plane docs must not tag these as historical.
+- **Affected:** GLOSSARY; Geography material; CURRENT-STATE.
 
 ---
 
