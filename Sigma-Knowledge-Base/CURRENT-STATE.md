@@ -1,92 +1,121 @@
 # CURRENT STATE — Sigma
 
-> **Question this document answers:** *What is actually true about Sigma right now, based on the evidence currently in this repository?*
+> The fastest reliable orientation to Sigma for a new Product Lead, Engineering Lead, or Architect. Read this before anything else.
 >
-> This is **not** a roadmap and **not** a restatement of strategy. It is the bridge between documented knowledge and delivery reality.
+> **Two things to hold at once:**
+> 1. Sigma has **substantial, decided product and architecture direction** (domain contracts, accepted ADRs, an execution plan).
+> 2. **None of it is implemented yet.** The current delivery baseline is **GREENFIELD / SETUP REQUIRED**.
 >
-> **Golden rule:** documented / validated direction ≠ implemented / live capability. Where delivery reality cannot be established from repository evidence, this document says so explicitly. No `LIVE` or `BUILDING` status is claimed anywhere below, because no build, test, deployment, or runtime evidence exists in this repository.
-
-**Evidence basis:** the Markdown/DOCX/YAML knowledge documents in this repository and their git history. There is **no code, no test output, no deployment manifest, and no delivery tracker** in the repository, so implementation status generally **cannot be established** and is marked accordingly.
-
-**Legend for each area:**
-- **Defined / validated** — written, substantive, and (for ADRs) marked as accepted baseline decisions.
-- **Delivery evidence** — concrete evidence in-repo that something has been built or run.
-- **Candidate / future** — direction that is drafted but not established as canonical or accepted.
-- **Cannot be established** — the repository does not contain evidence to make the call.
+> **Current product/architecture truth ≠ current implementation.** A PRD, HLD, ADR, schema, contract, Golden-E2E definition, prototype, or strategy doc is **not** evidence that a capability is operational, deployed, pilot-ready, or live. Use a more specific delivery status **only** where explicit implementation evidence exists (today, there is none in the repository).
 
 ---
 
-## Sigma overall
+## 1. What Sigma is, and the problem it solves
 
-- **Defined / validated:** The overall intent, the flow of meaning (source systems → domain truth → Context & Meaning → Commander Space → human decision), and the ownership boundaries between layers are expressed across the newer domain material and the Platform Architecture document.
-- **Not yet defined:** The **foundational conceptual layer is largely unwritten.** Sigma Doctrine (DOC-001), Operating Model (OM-001), Product Portfolio (PR-001), and Discovery/Research (RS-001) are **authoring shells** — real scope sections followed by `Authoring Placeholder` bodies. Despite their "Foundational" classification, they currently define nothing and hold no canonical authority.
-- **Structural reality:** The knowledge base is effectively **two layers that do not yet reference each other** — an older English conceptual layer (`DOC/OM/PA/PR/RS/KB`, uniform `last_updated: 2026-07-20`) and a newer, mostly-Hebrew layer (`Operations-Store/`, `Geography/`, `Context-and-Meaning/`, `CAT/`, `DM/`, dated around August 2026). Layer B contains newer, implementation-oriented product, architecture, contract, schema, and delivery artifacts, and was not referenced from the repository's front-door governance documents (registry, KB guide, README) before this refactor.
-- **Delivery evidence:** **Cannot be established.** Nothing in the repository shows a running or partially-built Sigma.
+Sigma exists to **reduce the distance between Information → Understanding → Decision → Execution** for operational organizations.
 
----
+Today, operational information is scattered across professional systems; understanding an operation, what it means, and what needs attention requires manual cross-referencing and verbal handoff. Sigma turns fragmented information into shared, trusted understanding and brings it to the point of human decision and action.
 
-## Operations
+Sigma is **not one application**, and it **does not replace professional/source systems** — those remain the owners of their own data.
 
-- **Defined:** An Operations Store package exists (PRD, HLD, ADR & contracts, canonical schema v0.1, API/event contract v0.1, and a Golden E2E / Phase-1 DoD runbook) plus OpenAPI and AsyncAPI starter specs. Owner-designated role: Operations Store is the **operational system of record for Sigma's canonical Operation representation and relevant operational state**.
-- **Placement (Batch 2A):** The starter YAML contracts now live under `02-DOMAINS/Operations/Contracts/`. The Operations Repository knowledge model (CAT-010) is kept as an **earlier/broader** model at `02-DOMAINS/Operations/Knowledge/` (WORKING, not canonical, does not override Store contracts). The Operational Repositories product concept (PR-017) is **archived** as HISTORICAL.
-- **Still unresolved:** the Operations Store ↔ Operations Repository (CAT-010) relationship is not fully reconciled; they are deliberately kept separate and must not be merged.
-- **Caveat on evidence:** The Operations Store package is authored as `.docx` and has **not** yet been converted or semantically verified in this repository, so its exact contracts are **not yet reviewable in text form** (conversion is Batch 2B).
-- **Delivery evidence:** **Cannot be established.** The Golden E2E / Phase-1 DoD describes acceptance criteria to be *proven*; there is no evidence they have been met.
+## 2. Current product / system model
 
----
+```text
+Professional Systems
+        ↓
+Domain Capabilities            (Operations, Geography, …)
+        ↓
+   ┌───────────────┐
+   │               │
+   ↓               ↓
+Context & Meaning → Zira  (Sigma's experience layer)
+                       ↓
+                 Human Decision & Action
+```
 
-## Geography / Spatial Intelligence
+**Context & Meaning is NOT mandatory middleware.** The experience layer may consume trusted domain facts **directly** when no cross-domain synthesis is required:
 
-- **Defined / validated:** A Geography domain pack — PRD (v0.2), HLD (v0.2), **ADR marked "Accepted baseline decisions"**, source-mapping/onboarding contract, and a Golden E2E / Phase-1 DoD. Architectural stance stated in the pack: a **Federated Spatial Intelligence Layer** that computes over authoritative sources and **does not** create a new authoritative geo store by default. A broader Spatial Intelligence vision/strategy document also exists.
-- **Validated direction:** The federation-over-canonical-store decision is recorded in the Geography ADR as an accepted baseline decision.
-- **Candidate / future:** Specific source integrations are intentionally left to be added only when a real source's owner/contract/capabilities are known — none are asserted as connected.
-- **Delivery evidence:** **Cannot be established.** No evidence the vertical slice has been executed.
+```text
+Operations Store → Zira            (factual operational state, no synthesis needed)
+```
 
----
+When cross-domain interpretation **is** required, it goes through Context & Meaning, which owns synthesis and meaning:
 
-## Context & Meaning
+```text
+Operations + Geography → Context & Meaning → Zira
+```
 
-- **Defined / validated:** Contains a PRD, HLD, an **ADR marked "accepted baseline decisions"**, an Input & Source Contract, an **Operational Signal Schema v0.1** (a business-contract proposal), and a Golden E2E / Phase-1 DoD. The pack states its output is the **Operational Signal** and its boundary is `Facts → Meaning` here, with commander-specific priority/decision UX belonging to the experience layer.
-- **Terminology note:** These documents refer to the experience layer as "Commander Experience"; the canonical name is **Commander Space**.
-- **Distinction to preserve:** **Operational Meaning** (organizational capability of turning signals into understanding) and **Operational Signal** (the concrete C&M output/contract) are **distinct**, not synonyms.
-- **Delivery evidence:** **Cannot be established.** The schema is a v0.1 proposal; the E2E is a DoD to be proven.
+The experience layer must **not** recreate cross-domain synthesis itself. **Human authority remains responsible for operational decisions.**
 
----
+## 3. Sigma vs Zira (product/module view)
 
-## Commander Space
+**Sigma is the wider system / capability ecosystem** — the domain and shared capabilities that establish trusted facts, computation, synthesis and reusable organizational capabilities. **Zira is Sigma's product / experience layer** for users; it contains the user-facing modules. Commander Space is **not** the container of every Sigma capability — it is one module **inside Zira**. Operations Management is **also** a module inside Zira (Commander Space does **not** contain Operations Management).
 
-- **Defined:** **Commander Space** (PR-014) is the canonical experience/product layer (owner-designated name). Product definitions exist for it and for two spaces within it: **Headquarters Workspace** (PR-015) and **My Space** (PR-016, formerly "Personal Workspace"). All are "Working Draft" product definitions.
-- **Candidate / future:** A "Modules" area within Commander Space is referenced conceptually but has no current content.
-- **Naming:** Canonical is **Commander Space** / **My Space**; "Commander Experience" and "Personal Workspace" are retained only for traceability.
-- **Delivery evidence:** **Cannot be established.** These are product definitions, not shipped experiences.
+```text
+SIGMA
+│
+├── Domain & Shared Capabilities
+│   ├── Operations Store
+│   ├── Geography / Spatial Intelligence
+│   ├── Context & Meaning
+│   └── Shared Capabilities
+│
+└── ZIRA — Product / Experience Layer
+    ├── Commander Space
+    ├── Operations Management
+    └── Additional modules / experiences
+```
 
----
+Operations Store, Geography / Spatial Intelligence, and Context & Meaning are **Sigma domain/shared capabilities, not Zira modules.**
 
-## Shared capabilities
+*(This is a product/module view, not a strict technical deployment hierarchy.)*
 
-- **Defined (Working Draft papers):** Operational Meaning (OM-004), Operational Assets (OM-005), Trusted Context (OM-006), Trust Framework (OM-008), Decision Model (DM-001), Entity Model (PA-010), AI Foundation (PA-011). These carry `status: Working Draft`.
-- **Archived skeletons:** Context Engine (PA-007), Knowledge Graph (PA-008), Repository Architecture (PA-009) were structure-only stubs and have been **archived** under `99-ARCHIVE/Historical/Architecture-Skeletons/` (HISTORICAL). Archiving the documents does **not** reject those capabilities — only the empty skeletons are non-authoritative.
-- **Placement (Batch 2A):** Entity Model (PA-010) and Operational Assets (OM-005) now sit under shared `Knowledge/`; Actionable Experience (OM-007) under shared `Actionable-Experience/` (Commander Space consumes it); One Delivery (OM-009) moved to `01-FOUNDATIONS/`.
-- **Delivery evidence:** **Cannot be established** for any shared capability.
+## 4. Domain boundaries
 
----
+| Domain / module | Question it answers | Owns | Does NOT own |
+|--|--|--|--|
+| **Professional systems** | — | their source-of-record objects | anything in Sigma |
+| **Operations Store** | *what is planned/executing?* | canonical Operation + relevant factual state, plan, activities, dependencies, projections, snapshots/audit | UX, cross-domain meaning, GIS, readiness score |
+| **Operations Management** | *how do I create/manage operations?* | the user-facing create/edit/manage experience (Flat, Gantt, Operation Page) | the canonical data (that's the Store) |
+| **Geography** | *what is happening in space?* | spatial computation, spatial relations, **Spatial Evidence** | operational "so what" |
+| **Context & Meaning** | *what does it mean together?* | cross-domain synthesis, impact, **Operational Signal** | domain truth, commander priority |
+| **Commander Space** | *what must the commander understand & do?* | awareness, attention, investigation, decision, action, approvals, continuity | domain truth, synthesis, source-of-truth |
 
-## Active execution / handoff evidence
+## 5. The domains and modules today
 
-- **Present:** An execution handoff spreadsheet (`SIGMA_FINAL_EXECUTION_HANDOFF_2026_2027.xlsx`) and an annual initiative document (`Operational-Data-Foundation.md`, spanning Operations & Geography) exist.
-- **Caveat:** The handoff is a binary spreadsheet not yet reviewed in text; the annual initiative is a plan, not a record of completed delivery.
-- **Delivery evidence:** These indicate **planning and hand-off intent**, not confirmed delivery. Actual execution status **cannot be established** from the repository.
+**Operations Store** — the **canonical operational backbone**: the canonical Sigma representation of an Operation (the Context Anchor) plus relevant factual state (plan, activities, milestones, dependencies, relationships, projections of external professional state), with provenance/freshness, planned-vs-actual separation, decision snapshots and audit. It exposes factual status, **not** a machine readiness score. *(Contract-backed: PRD/HLD/8 ADRs/Canonical Schema v0.1/API+Event v0.1/Golden-E2E — still `.docx` under `Operations-Store/`.)*
 
----
+**Operations Management** — the **module inside Zira** for creating, editing and managing Operations, Activities and the operational lifecycle. It **uses Operations Store as its canonical backbone**. Current direction is intentionally simpler than the former standalone GANTTIT: **Flat as the default view, basic Gantt, Operation Page, create/edit Operations & Activities.** See [`02-DOMAINS/Operations/Product/Operations-Management.md`](02-DOMAINS/Operations/Product/Operations-Management.md). *(Distinct from Operations Store; not part of Commander Space.)*
 
-## Unresolved current-state questions
+**Geography / Spatial Intelligence** — a **Federated Spatial Intelligence Layer**: sources own the data; Geography owns the spatial language and computation and returns **Spatial Evidence** with provenance/time/completeness. The current **product capability model** is **Spatialize · Resolve · Relate · Reconstruct · Qualify** (product-level capabilities). The technical contract exposes a spatial operation set and returns a **SpatialResult** — this is the **contract/technical representation** of the same thing; **product capabilities and API operations are different abstraction levels and need no 1:1 mapping.** Default is federate + compute; persist only by explicit ADR. *(PRD/HLD/10 accepted ADRs.)*
 
-1. **Operations Store ↔ Operations Repository** — the Operations Store (system of record) and the broader CAT-010 knowledge model are kept separate; their full reconciliation is still pending. PR-017 is archived as historical framing.
-2. **Operations Store contracts** — cannot be fully verified until the `.docx` package is converted and semantically checked (Batch 2B).
-3. **Foundational layer authority** — Doctrine / Operating Model / Product Portfolio / Discovery are shells; until written, the current approved direction lives in the newer domain packs and the Platform Architecture document.
-4. **Entity Model vs Operations Store schema** — PA-010 provides cross-cutting conceptual entity semantics; Operations Store owns its own canonical operational schema. Any conflict is to be exposed, not silently reconciled.
-5. **Delivery reality overall** — no in-repo evidence establishes what, if anything, is built, piloted, or live. This must be filled in from outside the repository before any delivery status is asserted.
+**Context & Meaning (C&M)** — owns **cross-domain synthesis and operational meaning**. Its canonical output is the **Operational Signal**: *an evidence-backed statement of operational meaning produced by C&M.* It is **not** a raw event, a raw observation, or an uninterpreted data point (raw source events remain distinct factual inputs). C&M synthesizes over an Evidence Gate, preserves conflicts, and does **not** set commander priority. *(PRD/HLD/13 accepted ADRs.)*
 
----
+**Commander Space** — the personal/commander experience for **awareness, attention, investigation, decision, action, relevant approvals, and knowledge continuity**. Current direction is **decision-first, not dashboard-first**:
+- **Headquarters** awareness leads with *"מה השתנה בתמונה המבצעית?" (what changed in the operational picture?)*, distinguishing **what changed · operational meaning · ownership/responsibility · action only where a real action exists.** Ownership attribution ≠ a call-to-action, and the experience must not imply exhaustive awareness where evidence does not support it.
+- **My Space** similarly opens on *what requires this user's attention now*, not a generic dashboard.
+*(These are current product/UX directions, not evidence of implementation.)*
 
-*This document reflects repository evidence as of the Batch 1 knowledge-base refactor. Delivery metadata will be added later, only once it can be evidenced.*
+## 6. Execution model (summary)
+
+Delivery runs on **Business Problem → Vertical Slice → Required Domain Capabilities → Reusable Capabilities → End-to-End Evidence**, starting from a business slice (not team roadmaps). A capability is not "done" because it exists; a quarterly **Gate** must prove the business outcome, the DoD, end-to-end behavior, and reuse. Priorities are tiered **P0 (build this year) / P1 (after Foundation + Gate) / P2 = NOT YET (direction, not commitment)**. Full detail: [`07-EXECUTION/EXECUTION-MODEL.md`](07-EXECUTION/EXECUTION-MODEL.md) (human-readable) and the source planning artifact `07-EXECUTION/Handoffs/SIGMA-FINAL-EXECUTION-HANDOFF-2026-2027.xlsx`.
+
+## 7. Current delivery baseline — **GREENFIELD / SETUP REQUIRED**
+
+All major current Sigma capability areas **require setup from zero**: Operations Store, Operations Management, Geography / Spatial Intelligence, Context & Meaning, and Zira and its product modules (Commander Space, Operations Management). No code, test, deployment, pilot, or live evidence exists in the repository. Treat every capability as not-yet-built until implementation evidence appears.
+
+## 8. What is Established vs Direction vs NOT YET
+
+- **Established (decided product/architecture, not built):** the layered model and boundaries; Operations Store contract + 8 ADRs; Geography federation + 10 ADRs; the 5-capability Geography product model; C&M Operational-Signal model + 13 ADRs; the execution model, P0/P1/NOT-YET tiers, five vertical slices, and quarterly gates; the GANTTIT → Operations Management decision.
+- **Direction (current product/UX intent):** Commander Space decision-first framing (HQ "what changed", My Space attention-first); Operations Management simpler experience (Flat/Gantt/Operation Page); Geography Text↔Map (P1).
+- **NOT YET (kept as direction, explicitly not committed):** Digital Twin / simulation, broad What-if, Multimodal Geo production, counterfactual reasoning, autonomous recommendations.
+
+## 9. Major unresolved decisions
+
+1. **Operations Store ↔ Operations Repository (CAT-010)** — kept distinct; full semantic reconciliation still open. (And both distinct from the archived **Operational Repositories** product concept, PR-017.)
+2. **Operations Management** lifecycle/workflow specifics (approval workflow, exact role model, when Map/Dependency layers appear) — not yet defined.
+3. Many domain **v0.1 "open decisions"** (status vocabularies, Must-Connect sources, snapshot triggers, retention, authorization/compartmentalization, CRS strategy, first Text→Map intents).
+4. **Named-but-undefined terms** in engineering material: Evidence Gate, Trust Contract, Capability Mesh.
+5. Foundational doctrine (DOC-001/OM-001/PR-001/RS-001) remains **unwritten (shells)**.
+
+> **Note for maintainers:** the control-plane docs (`GLOSSARY.md`, `DOCUMENT-REGISTRY.md`, `05-DECISIONS/DECISION-LOG.md`) still describe the pre-3B product hierarchy and the (now-resolved) Operational Signal conflict. They should be updated in a following pass to match this Owner Truth (Sigma-as-ecosystem with Zira as its product/experience layer, Operational Signal resolution, GANTTIT → Operations Management, GREENFIELD baseline). That update was intentionally out of scope for this content-hardening batch.
