@@ -27,9 +27,10 @@
 
 ## Operations
 
-- **Defined:** An Operations Store package exists (PRD, HLD, ADR & contracts, canonical schema v0.1, API/event contract v0.1, and a Golden E2E / Phase-1 DoD runbook) plus OpenAPI and AsyncAPI starter specs. A separate Operations Repository knowledge model (CAT-010) and an Operational Repositories product definition (PR-017) also exist.
-- **Unresolved:** **Operations Store vs Operations Repository vs Operational Repositories are not reconciled.** They may be different abstraction levels (operational state/canonical representation vs organizational knowledge vs product) and are deliberately kept separate. Do not treat them as one concept.
-- **Caveat on evidence:** The Operations Store package is authored as `.docx` and has not yet been converted or semantically verified in this repository, so its exact contracts are **not yet reviewable in text form**.
+- **Defined:** An Operations Store package exists (PRD, HLD, ADR & contracts, canonical schema v0.1, API/event contract v0.1, and a Golden E2E / Phase-1 DoD runbook) plus OpenAPI and AsyncAPI starter specs. Owner-designated role: Operations Store is the **operational system of record for Sigma's canonical Operation representation and relevant operational state**.
+- **Placement (Batch 2A):** The starter YAML contracts now live under `02-DOMAINS/Operations/Contracts/`. The Operations Repository knowledge model (CAT-010) is kept as an **earlier/broader** model at `02-DOMAINS/Operations/Knowledge/` (WORKING, not canonical, does not override Store contracts). The Operational Repositories product concept (PR-017) is **archived** as HISTORICAL.
+- **Still unresolved:** the Operations Store ↔ Operations Repository (CAT-010) relationship is not fully reconciled; they are deliberately kept separate and must not be merged.
+- **Caveat on evidence:** The Operations Store package is authored as `.docx` and has **not** yet been converted or semantically verified in this repository, so its exact contracts are **not yet reviewable in text form** (conversion is Batch 2B).
 - **Delivery evidence:** **Cannot be established.** The Golden E2E / Phase-1 DoD describes acceptance criteria to be *proven*; there is no evidence they have been met.
 
 ---
@@ -64,8 +65,8 @@
 ## Shared capabilities
 
 - **Defined (Working Draft papers):** Operational Meaning (OM-004), Operational Assets (OM-005), Trusted Context (OM-006), Trust Framework (OM-008), Decision Model (DM-001), Entity Model (PA-010), AI Foundation (PA-011). These carry `status: Working Draft`.
-- **Not yet written (skeletons):** Context Engine (PA-007), Knowledge Graph (PA-008), Repository Architecture (PA-009) are structure-only stubs with placeholder bodies — they name a capability but do not yet define it.
-- **Placement still open:** Whether some of these belong to Platform, Knowledge, or a domain (e.g. Entity Model, Repository Architecture) is not yet decided.
+- **Archived skeletons:** Context Engine (PA-007), Knowledge Graph (PA-008), Repository Architecture (PA-009) were structure-only stubs and have been **archived** under `99-ARCHIVE/Historical/Architecture-Skeletons/` (HISTORICAL). Archiving the documents does **not** reject those capabilities — only the empty skeletons are non-authoritative.
+- **Placement (Batch 2A):** Entity Model (PA-010) and Operational Assets (OM-005) now sit under shared `Knowledge/`; Actionable Experience (OM-007) under shared `Actionable-Experience/` (Commander Space consumes it); One Delivery (OM-009) moved to `01-FOUNDATIONS/`.
 - **Delivery evidence:** **Cannot be established** for any shared capability.
 
 ---
@@ -80,12 +81,11 @@
 
 ## Unresolved current-state questions
 
-1. **Operations abstraction levels** — how do Operations Store, Operations Repository (CAT-010), and Operational Repositories (PR-017) relate? Reconciliation pending; no merge authorized.
-2. **Operations Store contracts** — cannot be fully verified until the `.docx` package is converted and semantically checked.
+1. **Operations Store ↔ Operations Repository** — the Operations Store (system of record) and the broader CAT-010 knowledge model are kept separate; their full reconciliation is still pending. PR-017 is archived as historical framing.
+2. **Operations Store contracts** — cannot be fully verified until the `.docx` package is converted and semantically checked (Batch 2B).
 3. **Foundational layer authority** — Doctrine / Operating Model / Product Portfolio / Discovery are shells; until written, the current approved direction lives in the newer domain packs and the Platform Architecture document.
-4. **Skeleton capabilities** — Context Engine, Knowledge Graph, Repository Architecture are undefined; their relationship to OM/PA/domain concepts is open.
-5. **Capability placement** — Entity Model, Actionable Experience (OM-007), and One Delivery (OM-009) do not yet have a settled home.
-6. **Delivery reality overall** — no in-repo evidence establishes what, if anything, is built, piloted, or live. This must be filled in from outside the repository before any delivery status is asserted.
+4. **Entity Model vs Operations Store schema** — PA-010 provides cross-cutting conceptual entity semantics; Operations Store owns its own canonical operational schema. Any conflict is to be exposed, not silently reconciled.
+5. **Delivery reality overall** — no in-repo evidence establishes what, if anything, is built, piloted, or live. This must be filled in from outside the repository before any delivery status is asserted.
 
 ---
 

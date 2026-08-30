@@ -22,18 +22,18 @@ The **former** name for what is now **My Space**. Retained for traceability to P
 
 ---
 
-## Operations terminology — kept separate (relationship UNRESOLVED)
+## Operations terminology — kept separate (not merged)
 
-> These three terms have overlapping names but are treated as **potentially different abstraction levels**. They must **not** be automatically merged. Their exact relationship is pending semantic reconciliation (see [CURRENT-STATE.md](CURRENT-STATE.md) and the registry's conflict list).
+> These three terms have overlapping names but are treated as **different abstraction levels**. They must **not** be automatically merged. The Operations Store ↔ Operations Repository relationship is still pending full semantic reconciliation (see [CURRENT-STATE.md](CURRENT-STATE.md) and the registry's conflict list).
 
 ### Operations Store
-Current working direction: the **domain capability holding operational state and the canonical operational representation** of operations. Authored in the `Operations-Store/` package (PRD/HLD/ADR/schema/contracts, currently `.docx`).
+Owner-designated role: the **operational domain capability / system of record for Sigma's canonical Operation representation and relevant operational state**. It owns operation identity/core, plan, activities, milestones, dependencies, relevant factual state, projections/references to external professional objects, provenance, planned-vs-actual, and snapshots/audit where defined. It does **not** own cross-domain operational meaning, Commander attention/prioritization, GIS/spatial computation, machine-generated readiness scores, or professional-system source objects. Authored in the `Operations-Store/` package (currently `.docx`, **pending conversion** — contents not yet reviewable as text). Home: `02-DOMAINS/Operations/`.
 
 ### Operations Repository
-The **operations knowledge model** described in CAT-010 — operations represented as interconnected operational objects within a dynamic operational network. Possibly a broader organizational-knowledge concept than the Operations Store; relationship unresolved.
+The **operations knowledge model** described in CAT-010 (now `02-DOMAINS/Operations/Knowledge/Operations-Repository.md`) — operations as interconnected operational objects within a dynamic operational network. Treated as an **earlier/broader** repository model: knowledge status WORKING, **not canonical**, and it **does not override** the current Operations Store contracts.
 
 ### Operational Repositories
-The **product definition** in PR-017 concerned with maintaining trusted operational knowledge and reusable organizational assets. Possibly a product-level concept distinct from both of the above; relationship unresolved.
+The older product-level concept in PR-017, now archived (`99-ARCHIVE/Historical/Product-Concepts/`) with knowledge status **HISTORICAL**. Retained as historical product framing; it does **not** define the current Operations Store architecture.
 
 ---
 

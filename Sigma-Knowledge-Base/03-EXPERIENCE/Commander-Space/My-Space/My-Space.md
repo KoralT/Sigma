@@ -1,6 +1,7 @@
 ---
 id: PR-016
-title: Personal Workspace
+title: My Space
+former_name: Personal Workspace
 version: 1.0-draft
 status: Working Draft
 classification: Product Definition

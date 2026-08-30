@@ -29,7 +29,7 @@ All decisions dated **2026-08-30** (knowledge-base refactor, Phase 1 → Batch 1
 ### D-04 — ARC-001 will not be created
 - **Decision:** ARC-001 ("Sigma Reference Architecture") is no longer required and will **not** be authored. Its entry-architecture role is served by START-HERE.md, Platform Architecture (PA-001), and DOCUMENT-REGISTRY.md.
 - **Rationale:** ARC-001 is referenced as a conceptual entry point but no file exists; a replacement entry mechanism is now in place.
-- **Implications:** Existing ARC-001 references are marked for removal/migration; no replacement content is fabricated.
+- **Implications:** ARC-001 references in **active** documents (DM-001, PA-010, PA-011) were removed in Batch 2A and repointed to `01-FOUNDATIONS/Platform-Architecture.md`; legacy/historical documents retain references for traceability. No replacement content is fabricated.
 - **Affected:** DOCUMENT_REGISTRY (legacy), CAT-001, DM-001, PA-010, PA-011.
 
 ### D-05 — Layer A and Layer B coexist with unequal authority
@@ -67,6 +67,43 @@ All decisions dated **2026-08-30** (knowledge-base refactor, Phase 1 → Batch 1
 - **Rationale:** Repository structure should reflect existing knowledge, not hypothetical future content.
 - **Implications:** Batch 1 created only `05-DECISIONS/`. Domain/experience/shared-capability folders are created during their migration batches.
 - **Affected:** Repository structure.
+
+---
+
+## Batch 2A — semantic-placement decisions (2026-08-30)
+
+### D-11 — Operations trio: placement without merge
+- **Decision:** **Operations Store** is the operational domain capability / **system of record** for Sigma's canonical Operation representation and relevant operational state (owner-designated role); its home is `02-DOMAINS/Operations/`. **CAT-010 "Operations Repository"** is treated as an earlier/broader repository model — moved to `02-DOMAINS/Operations/Knowledge/Operations-Repository.md`, knowledge status **WORKING**, **not** canonical, must not override Operations Store contracts. **PR-017 "Operational Repositories"** is an older product concept — moved to `99-ARCHIVE/Historical/Product-Concepts/`, knowledge status **HISTORICAL**.
+- **Rationale:** Overlapping names denote different abstraction levels; extends D-03 (no auto-merge).
+- **Implications:** Migration notes added to CAT-010 and PR-017 (bodies unchanged). The CAT-010 duplicated "Part IV" block (113 identical lines) was removed and Parts VI–X renumbered V–IX — a deterministic defect fix, no semantic change. Operations Store ↔ CAT-010 reconciliation is still pending. This is a classification decision, not a claim that every concept inside PR-017 is superseded.
+- **Affected:** Operations Store `.docx` package; CAT-010; PR-017.
+
+### D-12 — Architecture skeletons archived (capabilities not rejected)
+- **Decision:** PA-007 Context Engine, PA-008 Knowledge Graph, PA-009 Repository Architecture are moved to `99-ARCHIVE/Historical/Architecture-Skeletons/`, knowledge status **HISTORICAL**. Not rebuilt in this batch.
+- **Rationale:** They are structure-only stubs with no substantive architecture to preserve as current guidance; current C&M / Trusted Context / Operations Store material carries the concrete definitions.
+- **Implications:** Archiving the **documents** does not reject the **capabilities**; migration notes state this explicitly.
+- **Affected:** PA-007, PA-008, PA-009.
+
+### D-13 — Entity Model is a shared semantic capability
+- **Decision:** PA-010 Entity Model → `04-SHARED-CAPABILITIES/Knowledge/Entity-Model.md`. Its role is cross-cutting conceptual entity semantics; it is **not** canonical for Operations entities (Operations Store owns its own canonical operational schema).
+- **Rationale:** Entity semantics are consumed across domains.
+- **Implications:** Any conflict between PA-010 and a domain schema is exposed, not silently reconciled.
+- **Affected:** PA-010; Operations Store schema.
+
+### D-14 — Actionable Experience is a shared experience principle
+- **Decision:** OM-007 Actionable Experience → `04-SHARED-CAPABILITIES/Actionable-Experience/`. It is a shared principle/capability that **Commander Space consumes/applies**; it is **not** the Commander Space product and is **not** merged into PR-014.
+- **Rationale:** Separates the reusable experience principle from the specific product.
+- **Affected:** OM-007; PR-014.
+
+### D-15 — One Delivery is a cross-Sigma foundation principle
+- **Decision:** OM-009 One Delivery → `01-FOUNDATIONS/One-Delivery.md`. Not merged into the OM-001 shell in this batch; OM-001 may reference it when the Operating Model is rebuilt.
+- **Rationale:** It expresses a cross-Sigma operating/delivery principle.
+- **Affected:** OM-009; OM-001 (future).
+
+### D-16 — Repository Catalog retained as evidence
+- **Decision:** CAT-001 Repository Catalog → `06-DISCOVERY/Evidence/Legacy-Repository-Catalog.md`, knowledge status **HISTORICAL**. Not merged in this batch.
+- **Rationale:** Useful evidence of the previous repository taxonomy; must not define V2 navigation or current architecture.
+- **Affected:** CAT-001.
 
 ---
 

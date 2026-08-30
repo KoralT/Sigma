@@ -1,4 +1,6 @@
-﻿# Part I – Operational Perspective
+﻿> **Migration note (2026-08-30):** This document represents an earlier/broader repository model. It is preserved for traceability and must not override the current Operations Store domain contracts.
+
+# Part I – Operational Perspective
 
 The Operations Repository governs Sigma's operational knowledge related to planning, coordinating, executing, and understanding military operations.
 
@@ -505,120 +507,7 @@ Operational knowledge should never be considered complete.
 Every operation represents an evolving organizational understanding.
 
 The Operations Repository therefore treats knowledge as a living organizational asset that continuously adapts to operational reality while preserving organizational history and semantic consistency.
-# Part IV – Operational Knowledge Lifecycle
-
-Operational knowledge is continuously created, refined, and expanded throughout the lifecycle of an operation.
-
-The Operations Repository therefore manages the evolution of operational understanding rather than static operational records.
-
-Knowledge maturity increases as planning progresses, execution unfolds, observations accumulate, and operational decisions reshape the operational environment.
-
----
-
-## Progressive Knowledge Creation
-
-Operational knowledge is rarely complete when an operation is first introduced.
-
-Initial planning typically defines only the basic operational intent.
-
-As planning progresses, additional knowledge emerges, including:
-
-- objectives,
-- participating organizations,
-- dependencies,
-- operational constraints,
-- geographic context,
-- assumptions,
-- supporting evidence,
-- and execution plans.
-
-The repository supports this progressive enrichment without requiring the operational model to be fully defined upfront.
-
----
-
-## Continuous Evolution
-
-Operational knowledge continues to evolve throughout execution.
-
-Operational reality constantly introduces change.
-
-Examples include:
-
-- new operational requirements,
-- changing priorities,
-- emerging risks,
-- updated dependencies,
-- modified objectives,
-- new collaborations,
-- operational discoveries,
-- unexpected outcomes.
-
-Rather than replacing previous understanding, the repository preserves the evolution of operational knowledge over time.
-
----
-
-## Historical Continuity
-
-Understanding how an operation evolved is often as important as understanding its current state.
-
-The repository therefore maintains historical continuity across the operational lifecycle.
-
-Historical knowledge enables:
-
-- operational learning,
-- after-action reviews,
-- decision traceability,
-- organizational memory,
-- future operational planning.
-
-Previous operational understanding remains part of the organizational knowledge base even after newer knowledge becomes available.
-
----
-
-## Operational Knowledge Maturity
-
-Operational knowledge naturally progresses through increasing levels of maturity.
-
-Typical progression includes:
-
-Intent
-
-↓
-
-Initial Planning
-
-↓
-
-Operational Coordination
-
-↓
-
-Execution
-
-↓
-
-Assessment
-
-↓
-
-Operational Learning
-
-Each stage contributes additional operational knowledge that enriches the repository and improves future operational understanding.
-
-The repository captures this progression without prescribing a rigid operational process.
-
-Organizations remain free to adapt their operational methodology while preserving a consistent knowledge model.
-
----
-
-## Living Operational Knowledge
-
-Operational knowledge should never be considered complete.
-
-Every operation represents an evolving organizational understanding.
-
-The Operations Repository therefore treats knowledge as a living organizational asset that continuously adapts to operational reality while preserving organizational history and semantic consistency.
-# Part VI – Operational Knowledge Categories
+# Part V – Operational Knowledge Categories
 
 The Operations Repository governs a broad spectrum of operational knowledge.
 
@@ -736,7 +625,7 @@ The repository preserves:
 - historical operational understanding.
 
 This knowledge continuously enriches future operational planning and supports explainable organizational learning across Sigma.
-# Part VII – Operational Questions
+# Part VI – Operational Questions
 
 The primary purpose of the Operations Repository is not to store operational information.
 
@@ -817,7 +706,7 @@ The repository should preserve organizational learning by answering:
 - Which new relationships emerged?
 - Which assumptions proved incorrect?
 - What knowledge should inform future operations?
-# Part VIII – Repository Responsibilities
+# Part VII – Repository Responsibilities
 
 The Operations Repository serves as the authoritative knowledge foundation for operational activity across Sigma.
 
@@ -921,7 +810,7 @@ analytics,
 and future Sigma capabilities consume operational knowledge without altering repository responsibilities.
 
 This separation ensures that operational knowledge remains stable while products continue to evolve.
-# Part IX – Operational Knowledge Dimensions
+# Part VIII – Operational Knowledge Dimensions
 
 The Operations Repository organizes operational knowledge across multiple complementary dimensions.
 
@@ -1029,7 +918,7 @@ Includes:
 - historical operational state.
 
 Operational evolution preserves organizational memory while enabling future learning.
-# Part X – Operational Understanding
+# Part IX – Operational Understanding
 
 The Operations Repository exists to transform operational information into operational understanding.
 

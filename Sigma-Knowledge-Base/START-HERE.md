@@ -63,7 +63,15 @@ Cutting across these layers are **Shared Capabilities** (Trusted Context, Operat
 
 ## 6. How to navigate the repository
 
-This repository is mid-migration to a navigation-first structure. **Today** it still contains the original ID-prefixed folders (`DOC/`, `OM/`, `PA/`, `PR/`, `RS/`, `CAT/`, `DM/`) alongside the newer domain folders (`Operations-Store/`, `Geography/`, `Context-and-Meaning/`). Use the **DOCUMENT-REGISTRY** as the map of record — it lists both the current path and the planned V2 path for every document. Do not rely on folder location alone during the migration.
+The navigation-first V2 structure is now in place:
+
+- `01-FOUNDATIONS/` — Platform Architecture, One Delivery (Doctrine/Operating Model/Product Portfolio remain shells under legacy `DOC/`, `OM/`, `PR/`).
+- `02-DOMAINS/` — `Operations/`, `Geography/`, `Context-and-Meaning/` (each with a `README.md`).
+- `03-EXPERIENCE/Commander-Space/` — `Commander-Space.md`, `Headquarters/`, `My-Space/`.
+- `04-SHARED-CAPABILITIES/` — Operational-Meaning, Trusted-Context, Decision-Model, AI, Knowledge (Operational Assets, Entity Model), Trust, Actionable-Experience.
+- `05-DECISIONS/`, `06-DISCOVERY/`, `07-EXECUTION/`, `99-ARCHIVE/`.
+
+A few legacy folders remain by design: `DOC/`, `OM/`, `PR/`, `RS/` hold authoring **shells** not yet rebuilt; `KB/` holds the legacy guide/glossary; `Operations-Store/` still holds the **`.docx` Operations Store package pending conversion (Batch 2B)**. Use the **DOCUMENT-REGISTRY** as the map of record — every `Current Path` there is the real physical path. Do not rely on folder location alone.
 
 Document **IDs are stable identifiers for traceability** (OM-006, PR-014, PA-011, …). Folders and filenames are for human navigation. When an ID and a location disagree, the registry is authoritative.
 
