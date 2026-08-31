@@ -3,6 +3,13 @@
 > Entry point for a new Product Lead, Engineering Lead, or Architect.
 > Read this first. It tells you what Sigma is, how the pieces fit, and — just as important — what you may **not** assume from a document simply existing.
 
+## Working with the Company Brain
+
+- **Canonical guide:** [`COMPANY-BRAIN-GUIDE.md`](COMPANY-BRAIN-GUIDE.md)
+- **Hebrew visual guide:** [`COMPANY-BRAIN-GUIDE-HE.html`](COMPANY-BRAIN-GUIDE-HE.html)
+
+Anyone new to Sigma, or using the Brain for Product / UX / Architecture / Engineering / Data / QA / Domain work, should start there.
+
 ---
 
 ## 1. What Sigma is
