@@ -111,7 +111,6 @@ Each migrated domain has a `README.md` describing what it owns, does not own, an
 | ID | Document | Current Path | Concept / Domain | Knowledge Status | Role |
 |--|--|--|--|--|--|
 | CAT-001 | Legacy Repository Catalog | 06-DISCOVERY/Evidence/Legacy-Repository-Catalog.md | Repository taxonomy (legacy) | HISTORICAL | Evidence only — not V2 navigation |
-| — | KB Accuracy Review (2026-08-30) | Sigma_KB_Accuracy_Review.md *(repo root)* | Prior audit evidence | HISTORICAL | Evidence only *(not moved this batch)* |
 | RS-001 | Sigma Discovery & Research | RS/RS-001 Sigma Discovery & Research.md | Discovery/research | SHELL | None until written *(not moved this batch)* |
 | RS-003 | Discovery Findings | RS/RS-003 Discovery Findings.md | Discovery findings | SHELL | None until written *(not moved this batch)* |
 
