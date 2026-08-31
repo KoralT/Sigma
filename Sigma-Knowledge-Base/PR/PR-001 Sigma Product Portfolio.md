@@ -76,6 +76,14 @@ SIGMA
 
 *(See [DECISION-LOG D-17](../05-DECISIONS/DECISION-LOG.md).)*
 
+**Two additional business territories are confirmed inside Zira: Planning and Control.** Operations Management is the current Zira module most relevant to **Planning**; **Control** exists today through the **Event / Combat Management** capability. Their business questions are distinct from each other and from Commander Space:
+
+- **Planning** — *what are we planning, and how do we prepare/manage it?*
+- **Control** — *what is happening now, what changed, and how do we manage/respond?*
+- **Commander Space** — *what from the operational world requires my attention, understanding, decision, approval or action?*
+
+**Their final product packaging (separate modules, one module with modes, or another composition) is intentionally not decided** and is **not** reflected as fixed tree entries above ([D-24](../05-DECISIONS/DECISION-LOG.md)).
+
 ---
 
 ## 4. Portfolio responsibility map
@@ -111,13 +119,20 @@ Portfolio-level ownership only — this section does not restate schema, API, or
 - **Does not** become the source of truth merely because information is visible or editable there.
 
 ### Commander Space *(module inside Zira)*
-- **Role:** a role/context-oriented user-facing module for **attention, understanding, decision and action** — **decision-first, not dashboard-first** — consuming trusted facts and meaning from Sigma capabilities.
-- **Boundary:** it is **one module inside Zira, not all of Zira.** It is **Zira's role-based personal operational workspace** — serving commanders **and other operational roles**, decision-first, **not** an all-information dashboard. **My Space** is **absorbed** into Commander Space (not a separate product); **Headquarters Workspace** is **not** a current canonical module (its Operational Awareness learning remains a reusable experience pattern). *(Owner decision [D-22](../05-DECISIONS/DECISION-LOG.md); current truth in `03-EXPERIENCE/Commander-Space/README.md`.)*
+- **Role:** a role/context-oriented user-facing module answering the key business question **"What requires my attention?"** — **attention, understanding, decision/approval and action** — **decision-first, not dashboard-first** — consuming trusted facts and meaning from Sigma capabilities.
+- **Confirmed business capabilities:** Attention (ranking ≠ recommendation); Notifications/Alerts (support Attention, not automatically Attention items — reduce noise); Situation Assessment; native/domain capability composition by role/context; Decision Support (situation/meaning/evidence, never forced); Approvals (what requires/is waiting for my approval); Directives/Follow-up; Knowledge Continuity; Evidence & Trust. Exact UX/mechanics are **not locked** — see `03-EXPERIENCE/Commander-Space/README.md`.
+- **Boundary:** it is **one module inside Zira, not all of Zira.** It is **Zira's role-based personal operational workspace** — serving commanders **and other operational roles**, decision-first, **not** an all-information dashboard. **Commander Space does not own the workflows that generate attention** — Planning, Control, Operations Store, Geography, and Context & Meaning can each generate or expose something it surfaces, without it absorbing that workflow. **My Space** is **absorbed** into Commander Space (not a separate product); **Headquarters Workspace** is **not** a current canonical module (its Operational Awareness learning remains a reusable experience pattern). *(Owner decisions [D-22](../05-DECISIONS/DECISION-LOG.md), [D-24](../05-DECISIONS/DECISION-LOG.md); current truth in `03-EXPERIENCE/Commander-Space/README.md`.)*
 
-### Operations Management *(module inside Zira)*
+### Operations Management *(module inside Zira — Planning territory)*
 - **Role:** a user-facing module for **operational planning and management workflow**; current direction evolved from standalone GANTTIT.
 - **Current stable scope:** create/edit Operations and Activities; **Flat** as a primary/default management view; basic **Gantt**; **Operation Page**; lifecycle context around **Plan → Approval → Execution → Closure**.
-- **Boundary:** Operations Management owns the **workflow/experience**; **Operations Store** owns the canonical Operation representation and domain truth. Open permissions/stewardship/approval-governance questions are **not** silently resolved here (§10).
+- **Boundary:** Operations Management owns the **workflow/experience**; **Operations Store** owns the canonical Operation representation and domain truth. Open permissions/stewardship/approval-governance questions are **not** silently resolved here (§10). Its business territory is **Planning** — *what are we planning, and how do we prepare/manage it?*
+
+### Control *(business territory — packaging inside Zira not yet decided)*
+- **Role:** answers *what is happening now, and how do we manage/respond to it?* Exists **today** through the current **Event / Combat Management** capability, managing the Operational Event from **Initial Report → Accumulating Information → Decisions/Directives/Involved Actors → Handling → Closure.**
+- **Current pain:** largely manual/fragmented; commanders/control roles collect relevant information themselves; insufficient real-time enrichment; SOP often exists outside the event workflow.
+- **Product direction:** reduce response time; enrich the event with relevant information; reduce information-gathering friction; embed SOP/organizational knowledge into the event flow; standardize fields/process/timeline; turn closed events into accumulated organizational data. **Analytics is explicitly not part of MVP.**
+- **Boundary:** Commander Space may surface an event-derived attention item without owning the Control workflow. Its **product packaging inside Zira (own module, mode of another module, or other composition) is not decided.**
 
 ### Shared Capabilities *(portfolio category, not an invented product list)*
 A category of cross-cutting capabilities that other parts of the portfolio consume — for example trust/provenance, semantic/entity foundations, decision-support foundations, AI foundations, and reusable experience principles. These are **portfolio building blocks, not new standalone products**; nothing here is packaged into a product except where current repository truth independently supports it.
@@ -135,7 +150,8 @@ A compact traceability map (synthesized from discovery/persona evidence — not 
 | Spatial context | "What is in / near / related to this operational space?" | **Geography** | — |
 | Cross-domain impact / meaning | "What does this combination of facts mean for my operation?" | **Context & Meaning** | — |
 | Role-specific attention | "What requires me now?" | **Zira / Commander Space** | — |
-| Operational management | "How do I create, update, plan and manage the operation?" | **Zira / Operations Management** (backed by **Operations Store**) | — |
+| Operational management / planning | "How do I create, update, plan and manage the operation?" | **Zira / Operations Management (Planning territory)** (backed by **Operations Store**) | — |
+| Real-time response to an emerging event | "What is happening now, and how do we manage/respond?" | **Control / Event Management** | **Zira / Commander Space** when the event requires this user's attention |
 
 ---
 
@@ -192,7 +208,10 @@ A product/capability may change shape without arbitrarily moving its **core owne
 Left open (not invented):
 
 - the exact future **Zira module inventory**,
+- **final packaging of Planning and Control** (separate modules / one module with modes / other composition),
 - **Operations Management role permissions and approval governance**,
+- detailed **Control / Event Management product design** (fields, standardized process, SOP-embedding mechanics, closed-event data model),
+- exact **Commander Space UX/mechanics** for its confirmed capabilities (Attention, Situation Assessment, Decision Support, Approvals, Directives, Knowledge Continuity, Evidence & Trust),
 - future **standalone/shared capability packaging**,
 - delivery **dates**,
 - **team ownership / org structure**,

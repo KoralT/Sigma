@@ -133,4 +133,73 @@ Genuine unresolved product decisions (do not treat as settled):
 
 ---
 
-*Sources: Owner Truth (2026-08-30); Operations Store PRD/HLD/ADR ownership boundaries; execution handoff (Operations capabilities); repository references to the operations-management module (Zira / מודול ניהול מבצעים). This is a product definition at GREENFIELD baseline; no implementation is implied.*
+## Next Product Step — Validate the First Vertical Slice
+
+> **The first Operations Management Vertical Slice is NOT defined yet, and must not be locked before targeted workflow discovery.** The repository contains strong target-state / product-direction material but **insufficient observed evidence** of the lived current workflow.
+
+### Current hypothesis (not validated truth)
+
+- **Leading candidate user population — HYPOTHESIS:** the short-term operational-control layer — **קצינות חמ"ל, רמ"די שליטה, מנל"חים**, and equivalent operational-control roles.
+- **Candidate operating horizon — HYPOTHESIS:** **24–72 hours.**
+- **Candidate JTBD — HYPOTHESIS:** *Maintain a current, shared operational picture for the next 24–72 hours: understand relevant operations, absorb changes, update operational state, and ensure the picture used by the headquarters reflects the current situation.*
+
+This is a **product hypothesis, not validated workflow truth.** Do **not** convert it into fact, and do **not** lock the first Vertical Slice before the discovery below is completed.
+
+### Discovery TODO (for the incoming Product Lead)
+
+Conduct **~2–3 focused workflow sessions** with representative short-term operational-control users — prefer **one קצינת חמ"ל, one רמ"ד שליטה, and optionally one מנל"ח** if the workflow materially differs. Use a **real recent operation** and ask users to **show the actual workflow and tools**, not describe desired features. Establish:
+
+1. **Entry** — how an operation enters the 24–72h control horizon, from whom, and in which artifact/system.
+2. **Current toolchain** — the actual systems, files, presentations and communication channels used to maintain the picture.
+3. **Change workflow** — how a real operational change is received, validated, updated and propagated.
+4. **Write ownership** — who may update which information.
+5. **Planned vs Actual** — whether/how planned state and current/actual state are distinguished today.
+6. **Minimum trusted picture** — the minimum information the user must see *together* to perform the job.
+7. **Presentation role** — whether slides are the working copy, integration layer, briefing artifact, communication artifact, or a combination.
+8. **Escalation boundary** — what can be updated directly vs what requires coordination, escalation, decision or approval.
+9. **Exit** — when the operation leaves short-term-control responsibility and what must be handed over/preserved.
+10. **Success evidence** — what observed behavior would prove the first slice has replaced a meaningful part of the current workflow.
+
+### Discovery method
+
+Do **not** lead with proposed solutions (Flat, Gantt, Operation Page, alerts, approvals). For each session walk a real case:
+
+```text
+Real Operation → Entry → Understand → Maintain → Change → Coordinate/Escalate → Exit
+```
+
+Whenever possible, ask **"Show me."** Record each finding as **Observed**, **User-stated**, or **Inferred**.
+
+**Key validation question:** *If the presentation disappeared tomorrow, what could the user no longer do?* Do **not** assume the goal is to eliminate PowerPoint. Determine whether the presentation is a **working copy**, a **manual integration layer**, a **communication/briefing artifact**, or a **combination** — this finding may materially change the first slice.
+
+### Exit criteria for this TODO
+
+Complete **only** when the Product Lead can evidence, without assumption:
+
+```text
+Operation enters → responsibility/handoff → information consumed → updates performed →
+changes propagated → escalation/decision boundary → exit/handoff
+```
+
+and can answer: **Who is the first user? What is the first JTBD? What is the slice entry? What is the slice exit? What information must be available? What can the user update? What current workaround/artifact is being replaced or materially reduced? What observed evidence constitutes GO?**
+
+Only then should the first Operations Management Vertical Slice be locked.
+
+### Explicitly NOT decided yet (do not treat as locked for Slice 1)
+
+Until this TODO is completed, none of these are validated first-slice requirements — they remain **possible product responses**, not requirements:
+
+- Create Operation as the center of the slice
+- Flat as the center of the slice
+- Gantt as the center of the slice
+- Operation Page as the center of the slice
+- eliminating PowerPoint
+- full approval flow
+- detailed RBAC / permissions
+- Map
+- dependency graph
+- Commander Space integration
+
+---
+
+*Sources: Owner Truth (2026-08-30); Operations Store PRD/HLD/ADR ownership boundaries; execution handoff (Operations capabilities); repository references to the operations-management module (Zira / מודול ניהול מבצעים); the 24–72h workflow reconstruction (found insufficient observed evidence to define the first slice). This is a product definition at GREENFIELD baseline; no implementation is implied, and the first Vertical Slice is an open hypothesis pending discovery.*
