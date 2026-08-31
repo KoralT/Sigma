@@ -15,7 +15,7 @@ All decisions dated **2026-08-30** (knowledge-base refactor, Phase 1 → Batch 1
 - **Affected:** Commander Space concept; PR-014/015/016/017; Context & Meaning 01/02/03/05/06; Geography 01/02/03.
 
 ### D-02 — "My Space" is current; "Personal Workspace" retained for traceability
-- **Decision:** The current experience name is **My Space**. PR-016 remains the stable document ID. The former term "Personal Workspace" is retained for traceability.
+- **Decision:** The current experience name is **My Space**. PR-016 remains the stable document ID. The former term "Personal Workspace" is retained for traceability. *(Superseded by D-22: "My Space" is no longer a separate product concept — its intent is absorbed into Commander Space. PR-016 is retained as history.)*
 - **Rationale:** Product-name drift between PR-016's title ("Personal Workspace") and the current experience name.
 - **Implications:** Planned V2 location is `03-EXPERIENCE/Commander-Space/My-Space/`. A front-matter alias will be added later; traceability to "Personal Workspace" is preserved.
 - **Affected:** PR-016 and inbound references.
@@ -138,6 +138,17 @@ All decisions dated **2026-08-30** (knowledge-base refactor, Phase 1 → Batch 1
 - **Rationale:** Owner clarification; supersedes the Phase-3A reconciliation report's tentative "historical" reading of these verbs.
 - **Implications:** GLOSSARY records the current product model; control-plane docs must not tag these as historical.
 - **Affected:** GLOSSARY; Geography material; CURRENT-STATE.
+
+---
+
+## Phase 4 — Commander Space composition (2026-08-30)
+
+### D-22 — Commander Space composition resolved
+- **Decision:** **Commander Space is Zira's role-based personal operational workspace.** It serves commanders **and other operational roles** — "Commander" describes the **decision-oriented** nature of the experience, **not** an exclusive user population; it is **not** an all-information dashboard. Its conceptual experience model is **Attention → Understand → Decide → Act** (a product/experience progression, **not** four required screens/routes/stages; a user may enter at the relevant level). **My Space is no longer a separate product concept — its personalized-workspace intent is absorbed into Commander Space.** **Headquarters Workspace is not a current canonical module or required sub-workspace;** its validated learnings — particularly **Operational Awareness** and *"what changed in the operational picture?"* — remain **reusable experience capabilities/patterns** that may be composed into Commander Space or other Zira modules when relevant. **Personalization changes attention, context, prioritization and available actions — not the underlying facts**, which remain shared and source-owned (the same fact may be surfaced differently to different roles without creating different versions of truth).
+- **Rationale:** Resolves the previously-open Commander Space internal-composition ambiguity (identified in the continuation test). The legacy PR-014/015/016 workspace model (Commander Space = Headquarters + My Space) was conceptual exploration, not current product truth.
+- **Implications:** Refines D-01 (naming) and supersedes the "My Space is current" part of D-02. Current product truth lives in `03-EXPERIENCE/Commander-Space/README.md`; `CURRENT-STATE.md`, `GLOSSARY.md`, `PR-001`, and this registry reflect it. **Boundaries preserved:** Commander Space ≠ Zira; Operations Management stays a separate Zira module; Operations Store owns operational truth; Geography owns spatial computation/Spatial Evidence; C&M remains optional. No personalization architecture/rules-engine and no delivery status are implied (baseline remains GREENFIELD / SETUP REQUIRED).
+- **Legacy preservation:** PR-014, PR-015, PR-016 are **not deleted or rewritten** — retained as historical conceptual exploration ("explored then vs true now").
+- **Affected:** Commander Space; My Space (PR-016); Headquarters Workspace (PR-015); PR-014; CURRENT-STATE; GLOSSARY; PR-001; DOCUMENT-REGISTRY.
 
 ---
 

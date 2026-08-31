@@ -84,14 +84,14 @@ Each migrated domain has a `README.md` describing what it owns, does not own, an
 
 ## 03 — Zira (experience layer) › Commander Space (module inside Zira)
 
-> **Zira** is Sigma's product/experience layer; **Commander Space** is a module inside it (Operations Management is another). Commander Space is **not** the whole experience layer and does not contain every capability (D-17). *(Folder is `03-EXPERIENCE/` from the earlier migration; not renamed.)*
+> **Zira** is Sigma's product/experience layer; **Commander Space** is a module inside it (Operations Management is another). Commander Space is **not** the whole experience layer (D-17). It is **Zira's role-based personal operational workspace** (serving commanders and other operational roles); **My Space is absorbed** into it and **Headquarters Workspace is not a current canonical module** ([D-22](05-DECISIONS/DECISION-LOG.md)). Current product truth is the **README**; PR-014/015/016 are legacy conceptual exploration, retained as history. *(Folder is `03-EXPERIENCE/` from the earlier migration; not renamed.)*
 
 | ID | Document | Current Path | Concept / Domain | Knowledge Status | Role |
 |--|--|--|--|--|--|
-| — | Commander Space README | 03-EXPERIENCE/Commander-Space/README.md | Commander Space | WORKING | Navigation |
-| PR-014 | Commander Space | 03-EXPERIENCE/Commander-Space/Commander-Space.md | Commander Space | WORKING | **Canonical name — Commander Space** (module inside Zira) |
-| PR-015 | Headquarters Workspace | 03-EXPERIENCE/Commander-Space/Headquarters/Headquarters-Workspace.md | Headquarters Workspace | WORKING | Candidate |
-| PR-016 | My Space *(former: Personal Workspace)* | 03-EXPERIENCE/Commander-Space/My-Space/My-Space.md | My Space | WORKING | Candidate; ID PR-016 retained, `former_name: Personal Workspace` |
+| — | Commander Space README | 03-EXPERIENCE/Commander-Space/README.md | Commander Space | WORKING | **Current Commander Space product truth** (D-22) |
+| PR-014 | Commander Space *(legacy conceptual)* | 03-EXPERIENCE/Commander-Space/Commander-Space.md | Commander Space | HISTORICAL | Legacy conceptual exploration; current truth in README. "Commander Space" remains the canonical **name** (D-01) |
+| PR-015 | Headquarters Workspace *(legacy)* | 03-EXPERIENCE/Commander-Space/Headquarters/Headquarters-Workspace.md | Headquarters Workspace | HISTORICAL | Not a current canonical module; Operational Awareness learning retained as a reusable pattern (D-22) |
+| PR-016 | My Space *(legacy; former: Personal Workspace)* | 03-EXPERIENCE/Commander-Space/My-Space/My-Space.md | My Space | HISTORICAL | My Space **absorbed** into Commander Space; not a current separate module (D-22); `former_name: Personal Workspace` retained |
 
 ## 04 — Shared Capabilities
 

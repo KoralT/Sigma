@@ -26,16 +26,19 @@ The wider **system / capability ecosystem**: the domain and shared capabilities 
 ## Naming — canonical terms and their aliases
 
 ### Commander Space
-The current name of the user-facing **module inside Zira** for the personal/commander experience — awareness, attention, investigation, decision, action, relevant approvals, and knowledge continuity. It is **not** the whole Sigma experience layer (that is **Zira**) and does **not** contain every capability. Defined in PR-014. **This is the term to use.**
+**Zira's role-based personal operational workspace** — a module inside Zira that brings forward what requires each user's **attention, understanding, decision or action** (experience model **Attention → Understand → Decide → Act**) according to role, responsibility and operational context. It serves commanders **and other operational roles** ("Commander" = the decision-oriented nature, **not** a commander-only population); it is decision-first, **not** an all-information dashboard, and **not** the whole Sigma experience layer (that is **Zira**). Personalization changes attention/context/actions, **not** the underlying shared, source-owned facts. **This is the term to use.** *(Owner decision [D-22](05-DECISIONS/DECISION-LOG.md); current product truth in `03-EXPERIENCE/Commander-Space/README.md`. PR-014 is legacy conceptual.)*
 
 ### Commander Experience *(deprecated alias)*
 Legacy terminology drift for **Commander Space**. Appears in the Context & Meaning and Geography document packs to refer to the same experience layer. It is **not** a separate product or domain. Retained here only so older documents remain interpretable; new material should say *Commander Space*.
 
-### My Space
-The **current** name for the individual operational experience within Commander Space (situational awareness, personal execution, task management). Documented under stable ID **PR-016**.
+### My Space *(absorbed — no longer a current product concept)*
+An earlier concept for an individual/personalized operational workspace. Its intent is now **absorbed into Commander Space** (which *is* Zira's role-based personal workspace); there is **no** current separate My Space product. Documented under stable ID **PR-016**, retained as historical/traceability only. *(Owner decision [D-22](05-DECISIONS/DECISION-LOG.md).)*
 
 ### Personal Workspace *(former term)*
-The **former** name for what is now **My Space**. Retained for traceability to PR-016 and to older references; not the current term.
+The **former** name for the earlier "My Space" concept — now absorbed into **Commander Space**. Retained for traceability to PR-016; not a current term or product.
+
+### Headquarters Workspace *(not a current canonical module)*
+An earlier workspace concept (PR-015). It is **not** a current canonical Zira module or required sub-workspace of Commander Space. Its validated learnings — particularly **Operational Awareness** and the question *"what changed in the operational picture?"* — remain **reusable experience capabilities/patterns** that may be composed into Commander Space or other Zira modules when relevant. Retained as historical evidence. *(Owner decision [D-22](05-DECISIONS/DECISION-LOG.md).)*
 
 ---
 

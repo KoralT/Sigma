@@ -91,10 +91,7 @@ Operations Store, Geography / Spatial Intelligence, and Context & Meaning are **
 
 **Context & Meaning (C&M)** — owns **cross-domain synthesis and operational meaning**. Its canonical output is the **Operational Signal**: *an evidence-backed statement of operational meaning produced by C&M.* It is **not** a raw event, a raw observation, or an uninterpreted data point (raw source events remain distinct factual inputs). C&M synthesizes over an Evidence Gate, preserves conflicts, and does **not** set commander priority. *(PRD/HLD/13 accepted ADRs.)*
 
-**Commander Space** — the personal/commander experience for **awareness, attention, investigation, decision, action, relevant approvals, and knowledge continuity**. Current direction is **decision-first, not dashboard-first**:
-- **Headquarters** awareness leads with *"מה השתנה בתמונה המבצעית?" (what changed in the operational picture?)*, distinguishing **what changed · operational meaning · ownership/responsibility · action only where a real action exists.** Ownership attribution ≠ a call-to-action, and the experience must not imply exhaustive awareness where evidence does not support it.
-- **My Space** similarly opens on *what requires this user's attention now*, not a generic dashboard.
-*(These are current product/UX directions, not evidence of implementation.)*
+**Commander Space** — **Zira's role-based personal operational workspace.** It serves commanders **and other operational roles** ("Commander" describes the *decision-oriented* nature of the experience, not an exclusive user population), bringing forward what requires each user's **attention, understanding, decision, or action** according to their role, responsibility, and operational context. It is **decision-first — not an all-information dashboard.** Its experience model is **Attention → Understand → Decide → Act** (a progression, not four mandatory screens; a user may enter at the relevant level). **Personalization changes attention, context, prioritization and available actions — not the underlying facts**, which remain shared and source-owned. **My Space** is **absorbed** into Commander Space (no longer a separate product concept); **Headquarters Workspace** is **not** a current canonical module — its validated **Operational Awareness** learning ("what changed in the operational picture?") remains a **reusable experience pattern** that may be composed in when relevant. See [`03-EXPERIENCE/Commander-Space/README.md`](03-EXPERIENCE/Commander-Space/README.md). *(Current product/UX direction, not evidence of implementation.)*
 
 ## 6. Execution model (summary)
 
@@ -107,7 +104,7 @@ All major current Sigma capability areas **require setup from zero**: Operations
 ## 8. What is Established vs Direction vs NOT YET
 
 - **Established (decided product/architecture, not built):** the layered model and boundaries; Operations Store contract + 8 ADRs; Geography federation + 10 ADRs; the 5-capability Geography product model; C&M Operational-Signal model + 13 ADRs; the execution model, P0/P1/NOT-YET tiers, five vertical slices, and quarterly gates; the GANTTIT → Operations Management decision.
-- **Direction (current product/UX intent):** Commander Space decision-first framing (HQ "what changed", My Space attention-first); Operations Management simpler experience (Flat/Gantt/Operation Page); Geography Text↔Map (P1).
+- **Direction (current product/UX intent):** Commander Space as Zira's role-based, decision-first personal workspace (Attention → Understand → Decide → Act); Operations Management simpler experience (Flat/Gantt/Operation Page); Geography Text↔Map (P1).
 - **NOT YET (kept as direction, explicitly not committed):** Digital Twin / simulation, broad What-if, Multimodal Geo production, counterfactual reasoning, autonomous recommendations.
 
 ## 9. Major unresolved decisions

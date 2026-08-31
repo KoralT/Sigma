@@ -112,7 +112,7 @@ Portfolio-level ownership only — this section does not restate schema, API, or
 
 ### Commander Space *(module inside Zira)*
 - **Role:** a role/context-oriented user-facing module for **attention, understanding, decision and action** — **decision-first, not dashboard-first** — consuming trusted facts and meaning from Sigma capabilities.
-- **Boundary:** it is **one module inside Zira, not all of Zira.** Its precise internal workspace structure is treated as current-stable-only; where legacy Headquarters/My Space framing is unresolved, that detail is left open (§10) rather than asserted here.
+- **Boundary:** it is **one module inside Zira, not all of Zira.** It is **Zira's role-based personal operational workspace** — serving commanders **and other operational roles**, decision-first, **not** an all-information dashboard. **My Space** is **absorbed** into Commander Space (not a separate product); **Headquarters Workspace** is **not** a current canonical module (its Operational Awareness learning remains a reusable experience pattern). *(Owner decision [D-22](../05-DECISIONS/DECISION-LOG.md); current truth in `03-EXPERIENCE/Commander-Space/README.md`.)*
 
 ### Operations Management *(module inside Zira)*
 - **Role:** a user-facing module for **operational planning and management workflow**; current direction evolved from standalone GANTTIT.
@@ -192,7 +192,6 @@ A product/capability may change shape without arbitrarily moving its **core owne
 Left open (not invented):
 
 - the exact future **Zira module inventory**,
-- the exact **Commander Space internal workspace model** where legacy and current material differ,
 - **Operations Management role permissions and approval governance**,
 - future **standalone/shared capability packaging**,
 - delivery **dates**,
