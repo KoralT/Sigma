@@ -70,7 +70,7 @@ These concerns belong to product, platform, and engineering documentation rather
 
 # References
 
-- ARC-001 Sigma Reference Architecture
+- PA-001 Sigma Platform Architecture
 - DOC-001 Sigma Doctrine
 - OM-006 Trusted Context
 - OM-007 Actionable Experience

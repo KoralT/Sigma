@@ -9,6 +9,8 @@ last_updated: 2026-07-20
 parent: PA-001
 ---
 
+> **Migration note (2026-08-30):** Archived skeleton. Knowledge status: **HISTORICAL**. This document contains no substantive architecture and is not current canonical guidance. Archiving the document does **not** reject the Context Engine capability; only this skeleton is historical/non-authoritative.
+
 # Context Engine
 
 ## Purpose

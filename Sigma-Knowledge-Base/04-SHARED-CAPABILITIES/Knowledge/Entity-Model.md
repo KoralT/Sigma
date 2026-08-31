@@ -80,7 +80,7 @@ These concerns belong to implementation and product-specific architecture rather
 
 # References
 
-- ARC-001 Sigma Reference Architecture
+- PA-001 Sigma Platform Architecture
 - OM-005 Operational Assets
 - PA-008 Knowledge Graph
 - PA-009 Repository Architecture

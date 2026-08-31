@@ -8,6 +8,8 @@ owner: Sigma
 last_updated: 2026-07-20
 ---
 
+> **Migration note (2026-08-30):** Retained as historical evidence of the previous repository taxonomy. Knowledge status: **HISTORICAL**. It does not define V2 navigation or current architecture; its original content is unchanged. See `DOCUMENT-REGISTRY.md` for the current map.
+
 # Repository Catalog
 
 > **Purpose**

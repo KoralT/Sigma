@@ -9,6 +9,8 @@ last_updated: 2026-07-20
 parent: PR-014
 ---
 
+> **Migration note (2026-08-30):** Retained as historical product framing. Knowledge status: **HISTORICAL**. This document does **not** define the current Operations Store architecture and is no longer a current child product of Commander Space. Its conceptual body is unchanged and preserved for traceability. This classification does not assert that every concept within it has been superseded.
+
 # Operational Repositories
 
 > **Product Positioning**

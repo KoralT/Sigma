@@ -67,7 +67,7 @@ These topics belong to product, UX, and engineering documentation.
 
 # References
 
-- ARC-001 Sigma Reference Architecture
+- PA-001 Sigma Platform Architecture
 - OM-006 Trusted Context
 - OM-008 Trust Framework
 - PA-008 Knowledge Graph
