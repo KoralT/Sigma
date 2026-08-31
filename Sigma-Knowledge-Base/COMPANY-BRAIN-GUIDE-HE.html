@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדריך למוח הארגוני של Sigma</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a2e;
+    --muted: #55607a;
+    --accent: #1f4d8f;
+    --accent-bg: #eef3fb;
+    --border: #d9dee8;
+    --code-bg: #f4f6fa;
+    --warn-bg: #fff6e5;
+    --warn-border: #e0b04a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Segoe UI", "Arial Hebrew", Tahoma, Arial, sans-serif;
+    line-height: 1.75;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 96px;
+    font-size: 17px;
+  }
+  h1, h2, h3, h4 { font-weight: 700; line-height: 1.35; }
+  h1 { font-size: 30px; margin: 0 0 8px; color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
+  h2 { font-size: 23px; margin: 44px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border); color: var(--accent); }
+  h3 { font-size: 19px; margin: 28px 0 10px; color: var(--fg); }
+  h4 { font-size: 16px; margin: 18px 0 6px; color: var(--muted); }
+  p { margin: 10px 0; }
+  ul, ol { margin: 10px 0; padding-inline-start: 26px; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--accent); }
+  code { background: var(--code-bg); border-radius: 4px; padding: 1px 6px; font-family: Consolas, "Courier New", monospace; font-size: 0.92em; direction: ltr; unicode-bidi: embed; display: inline-block; }
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; overflow-x: auto; direction: ltr; text-align: left; font-family: Consolas, "Courier New", monospace; font-size: 0.9em; margin: 14px 0; }
+  blockquote { margin: 14px 0; padding: 12px 18px; background: var(--accent-bg); border-inline-start: 4px solid var(--accent); border-radius: 4px; }
+  blockquote p { margin: 6px 0; }
+  .note {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 15.5px;
+  }
+  .toc {
+    background: var(--accent-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 24px 0 36px;
+  }
+  .toc h2 { border: none; margin: 0 0 10px; padding: 0; font-size: 18px; }
+  .toc ol { columns: 2; column-gap: 32px; }
+  .toc ol ol { columns: 1; margin-top: 4px; }
+  .toc li { margin: 4px 0; font-size: 15px; break-inside: avoid; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14.5px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: right;
+    vertical-align: top;
+  }
+  th { background: var(--accent-bg); font-weight: 700; }
+  tr:nth-child(even) td { background: #fafbfd; }
+  .en { direction: ltr; unicode-bidi: isolate; display: inline; font-family: Consolas, "Courier New", monospace; font-size: 0.93em; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 8px;
+    font-size: 12.5px;
+    margin-inline-end: 6px;
+  }
+  .companion-note {
+    background: #f0f0f5;
+    border: 1px dashed var(--muted);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 14.5px;
+    color: var(--muted);
+    margin: 20px 0 36px;
+  }
+  footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>מדריך למוח הארגוני של Sigma</h1>
+<div class="subtitle">גרסה חזותית בעברית — נלווית למדריך הקנוני</div>
+
+<div class="companion-note">
+  <strong>הערה:</strong> מסמך זה הוא <strong>עותק נלווה, ידידותי לקריאה ולשיתוף</strong>, ולא מקור אמת נוסף.
+  המסמך הקנוני והמתוחזק ב-Git הוא
+  <code class="en">COMPANY-BRAIN-GUIDE.md</code>.
+  כאשר יש סתירה בין המסמכים — <strong>המסמך ה-Markdown הוא הקובע</strong>.
+</div>
+
+<div class="toc">
+  <h2>תוכן העניינים</h2>
+  <ol>
+    <li><strong>חלק א׳ — מדריך עבודה</strong>
+      <ol>
+        <li>מטרה</li>
+        <li>איפה לעבוד?</li>
+        <li>מאיפה להתחיל?</li>
+        <li>איך לשאול שאלות את ה-Company Brain?</li>
+        <li>השאלות החשובות ביותר לשאול</li>
+        <li>שאלות מפתח על Sigma</li>
+        <li>איך יודעים למה לתת אמון?</li>
+        <li>סטטוס ידע מול סטטוס Delivery</li>
+        <li>איך להשתמש ב-AI מול ה-Company Brain?</li>
+        <li>מה לא לעשות?</li>
+        <li>איך נכנס ידע חדש ל-Brain?</li>
+        <li>מתי לעדכן את ה-Company Brain?</li>
+        <li>לפני הוספת מסמך חדש</li>
+        <li>הגדרת "גמור" (Definition of Done) לעדכון משמעותי</li>
+        <li>התחלה מהירה לתורם חדש</li>
+      </ol>
+    </li>
+    <li><strong>חלק ב׳ — מדריך לפי תפקיד</strong>
+      <ol>
+        <li>Product Manager / Product Lead</li>
+        <li>UX / Product Designer</li>
+        <li>Architect</li>
+        <li>Tech Lead / Developer</li>
+        <li>Data Engineer / Data Product</li>
+        <li>QA / Validation</li>
+        <li>מומחה תפעולי / דומייני (Domain Expert)</li>
+        <li>מנהל/ת מוצר נכנס/ת (Incoming Product Lead)</li>
+        <li>Prompt אוניברסלי לשימוש מול ה-Company Brain</li>
+        <li>עקרון-העל של מדריך התפקידים</li>
+      </ol>
+    </li>
+  </ol>
+</div>
+
+<hr>
+
+<h2>חלק א׳ — מדריך עבודה</h2>
+
+<h3>מטרה</h3>
+<p>ה-<span class="en">Sigma Company Brain</span> הוא מערכת הידע המשותפת של המוצר עבור Sigma.</p>
+<p>מטרתו אינה רק לשמר תיעוד. הוא אמור לאפשר לכל מי שעובד על Sigma להבין:</p>
+<ul>
+  <li>מה Sigma מנסה להשיג,</li>
+  <li>מה נכון היום,</li>
+  <li>מה כל אחריות מוצרית/דומיינית בעלת בית עליה (owns),</li>
+  <li>איך החלקים השונים של Sigma מתקשרים זה עם זה,</li>
+  <li>מה כבר הוחלט,</li>
+  <li>מה עדיין פתוח,</li>
+  <li>מה היפותזה מול כיוון מבוסס,</li>
+  <li>ומה הפעולה האחראית הבאה.</li>
+</ul>
+<p>יש להשתמש ב-Company Brain <strong>לפני</strong> הישענות על מסמכים היסטוריים, פרוטוטייפים ישנים, זיכרון אישי, או מסירה בעל-פה.</p>
+
+<h3>1. איפה לעבוד?</h3>
+<p><strong>Baseline רשמי.</strong> ה-Company Brain הרשמי חי על <code class="en">main</code>. ה-Baseline הרשמי הראשון שאושר הוא <code class="en">company-brain-v1.0</code>.</p>
+<p>אין להשתמש בענפי עבודה ישנים כמקור ל-Product Truth נוכחי. הענף <code class="en">kb-refactor/batch-1</code> נשמר כהיסטוריית המימוש של שדרוג ה-Company Brain בלבד. הוא <strong>אינו</strong> מקור העבודה מכאן ואילך.</p>
+<p><strong>כלל ברירת המחדל.</strong></p>
+<ul>
+  <li>קוראים מ-<code class="en">main</code>.</li>
+  <li>להשוואה היסטורית: משתמשים בהיסטוריית Git או ב-Tag בשם <code class="en">company-brain-v1.0</code>.</li>
+  <li>לעבודה חדשה: יוצרים ענף חדש מתוך <code class="en">main</code> העדכני ביותר.</li>
+  <li>אין לשנות את ה-Baseline <code class="en">company-brain-v1.0</code>.</li>
+</ul>
+
+<h3>2. מאיפה להתחיל?</h3>
+<p>אין להתחיל בחיפוש אקראי במסמכים. יש להשתמש ב-Brain לפי הסדר הבא.</p>
+<p><strong>שלב 1 — האמת הנוכחית (Current Truth).</strong> מתחילים ב-<code class="en">CURRENT-STATE.md</code>. משתמשים בו כדי להבין איך Sigma נראית היום, מהן אחריות המוצר/הדומיין הנוכחיות, מהי בשלות ה-Delivery, מה מבוסס, ומה נשאר פתוח.</p>
+<p><strong>שלב 2 — עקרונות המוצר.</strong> קוראים את <code class="en">DOC/DOC-001 Sigma Doctrine.md</code>. משתמשים בו כדי להבין למה Sigma קיימת, מהם העקרונות היציבים לאורך זמן, מה Sigma צריכה וצריכה שלא להיות, ואיך עובדות, הקשר, משמעות, קשב, החלטות, פעולות וזיכרון מתקשרים זה עם זה.</p>
+<p><strong>שלב 3 — איך Sigma עובדת.</strong> קוראים את <code class="en">OM/OM-001 Sigma Operating Model.md</code>. משתמשים בו כדי להבין איך צורך עסקי הופך ליכולת, איך משתמשים ב-Vertical Slice, איך מטפלים בתלויות/חוזים, איך עובדים ה-Gates וה-DoD, ומתי שאלה פתוחה צריכה לחסום עבודה — ומתי לא.</p>
+<p><strong>שלב 4 — נוף המוצר.</strong> קוראים את <code class="en">PR/PR-001 Sigma Product Portfolio.md</code>. משתמשים בו כדי להבין על מה Sigma אחראית, מהו נוף המוצר/הדומיינים הנוכחי, מה ההבדל בין Sigma ל-Zira, ומהו הקשר בין יכולות דומיין לחוויות פונות-משתמש.</p>
+<p><strong>שלב 5 — החלטות.</strong> משתמשים ב-<code class="en">05-DECISIONS/DECISION-LOG.md</code> <strong>לפני</strong> פתיחה מחדש של שאלה ארכיטקטונית או מוצרית. שואלים: <em>האם זה כבר הוחלט? האם כיוון קודם הוחלף בכוונה? האם זה באמת פתוח, או שאני עומד/ת לפתוח מחדש החלטה שהתקבעה?</em></p>
+<p><strong>שלב 6 — נכנסים לדומיין הרלוונטי.</strong> רק לאחר הבנת ההקשר ברמת המערכת, נכנסים לתחום הרלוונטי: Operations, Geography / Spatial Intelligence, Context &amp; Meaning, Commander Space, Planning / Operations Management, Control / Event Management, Shared Capabilities, Execution.</p>
+
+<h3>3. איך לשאול שאלות את ה-Company Brain?</h3>
+<p>ה-Company Brain שימושי ביותר כאשר שואלים שאלות <strong>עסקיות/מוצריות</strong>, ולא רק שאלות חיפוש-מסמכים.</p>
+<p>להימנע מ: <em>"אילו מסמכים קיימים על Operations?"</em></p>
+<p>עדיף: <em>"איזו בעיה עסקית פותר Operations Store, מה הוא בעל-בית עליו, מה הוא במפורש לא בעל-בית עליו, ומה צריך לקרות הלאה?"</em></p>
+
+<h3>4. השאלות החשובות ביותר לשאול</h3>
+<p><strong>להבין מוצר/דומיין:</strong> למה היכולת הזו קיימת? על איזו שאלה עסקית היא עונה? מי צריך אותה ובאיזה הקשר? מה היא בעלת-בית עליו? מה היא במפורש לא בעלת-בית עליו? מהן תלויות ה-Upstream וה-Downstream שלה? עם אילו יכולות Sigma נוספות היא מתקשרת? מהו Product Truth מבוסס? מה עדיין היפותזה? מה נשאר פתוח בכוונה? מה היסטורי? מהו מצב ה-Delivery הנוכחי? אילו ראיות תומכות בכיוון הנוכחי? מהי הפעולה המוצרית האחראית הבאה?</p>
+<p><strong>לפני עיצוב פתרון:</strong> איזו בעיה עסקית/משתמש אנחנו פותרים? איזה תחום עסקי בעל-בית על ה-Workflow? איזה דומיין בעל-בית על המידע הבסיסי? האם יכולת קיימת ב-Sigma כבר מספקת חלק מזה? האם אנחנו משכפלים מערכת מקצועית? האם אנחנו בטעות מכניסים לוגיקה דומיינית לתוך Zira? האם נדרשת משמעות חוצת-דומיינים, או שהחוויה יכולה לצרוך עובדות דומיין מהימנות ישירות? אילו רעיונות מוצריים קודמים כדאי לשמר בלי להתייחס אוטומטית למימוש שלהם כאל אמת נוכחית? איזו החלטה כבר התקבלה ומגבילה את הפתרון? מהו ה-Vertical Slice הקטן ביותר שיכול לאמת את ההנחה החשובה?</p>
+<p><strong>לפני שינוי ארכיטקטורה:</strong> איזה דומיין צריך להיות בעל-בית על האמת הזו? האם זה מצב עובדתי דומייני, עדות מרחבית (Spatial Evidence), משמעות חוצת-דומיינים, או התנהגות חוויה? האם כבר קיימת החלטת גבול מפורשת? איזה חוזה צריך להתקיים בין הרכיבים האחראיים? האם ההחלטה הארכיטקטונית הזו תומכת ב-Vertical Slice אמיתי, או שאנחנו מתכננים תשתית ללא צורך מוכח?</p>
+<p><strong>לפני בניית פרוטוטייפ:</strong> איזה Product Truth הפרוטוטייפ צריך לבטא? אילו יכולות הן כיוון נוכחי מול מועמדות (candidates)? אילו שאלות אנחנו מנסים לאמת? מה <strong>אסור</strong> להשתמע כמוחלט על-ידי הפרוטוטייפ? אילו התנהגויות מפרוטוטייפ היסטורי הן עדות עיצובית שימושית אך לא Product Truth נוכחי? מה נצטרך ללמוד ממשתמשים לפני שנקדם עיצוב זה ל-Product Truth?</p>
+<p><strong>לפני תחילת פיתוח:</strong> איזו תוצאה עסקית ה-Slice הזה צריך להוכיח? מהו ה-DoD הנוכחי? אילו חוזים/תלויות צריכים להיסגר עבור ה-Slice הזה? אילו החלטות פתוחות באמת חוסמות את ה-Slice הזה? מה יכול להישאר לא פתור? אילו ראיות יאפשרו לעבור את ה-Gate? האם אנחנו מדגימים זאת מקצה-לקצה על מידע אמיתי?</p>
+
+<h3>5. שאלות מפתח על Sigma</h3>
+<p>שאלות אלה שימושיות לכל תורם/ת חדש/ה כדי להתמצא.</p>
+<ul>
+  <li><strong>Sigma</strong> — איזו בעיה Sigma פותרת שמערכות מקצועיות בודדות אינן יכולות לפתור לבד?</li>
+  <li><strong>Zira</strong> — איזה חלק מהבעיה הזו שייך לשכבת המוצר/החוויה?</li>
+  <li><strong>Operations Store</strong> — מהי האמת התפעולית המהימנה שאנחנו צריכים לייצג?</li>
+  <li><strong>Geography</strong> — איזו שאלה מרחבית צריכה מענה, בלי לדרוש מהמוצר הצורך להפוך למוצר GIS?</li>
+  <li><strong>Context &amp; Meaning</strong> — האם באמת נדרשת כאן סינתזה חוצת-דומיינים?</li>
+  <li><strong>Planning</strong> — מה אנחנו מתכננים, ואיך מכינים/מנהלים את זה?</li>
+  <li><strong>Control</strong> — מה קורה עכשיו, מה השתנה, ואיך מנהלים/מגיבים?</li>
+  <li><strong>Commander Space</strong> — מה מהעולם התפעולי דורש מהמשתמש הזה קשב, הבנה, החלטה, אישור או פעולה?</li>
+</ul>
+<p>שאלות אלה מתארות <strong>אחריויות שונות</strong>. אין לאחד אותן למוצר אחד רק בגלל שהן מתקשרות זו עם זו.</p>
+
+<h3>6. איך יודעים למה לתת אמון?</h3>
+<p>לא לכל מסמך יש אותה סמכות. יש להשתמש בסדר הבא.</p>
+<ol>
+  <li><strong>Product Truth נוכחי שאושר על-ידי בעל-הבית (Owner)</strong> — החלטות מוצר נוכחיות שאושרו במפורש הן בעלות הסמכות הגבוהה ביותר. הן אמורות להיות מיוצגות ב-Company Brain הנוכחי.</li>
+  <li><strong>Company Brain נוכחי</strong> — המסמכים הנוכחיים על <code class="en">main</code> מייצגים את הידע העבודה הקנוני של Sigma.</li>
+  <li><strong>חומר עבודה / Discovery</strong> — עדות שימושית וחשיבה פעילה. הוא עשוי להשפיע על החלטה, אך אין להתייחס אליו אוטומטית כאל Product Truth.</li>
+  <li><strong>פרוטוטייפים קודמים</strong> — עדות לעיצוב מוצרי (Product Design Evidence). משתמשים בהם כדי לא לאבד חשיבה קודמת משמעותית. אין להניח: <em>"זה קיים בפרוטוטייפ, לכן זה המוצר."</em> ה-Company Brain אמור להניע את הפרוטוטייפ הבא — לא שהפרוטוטייפ הקודם יניע את ה-Company Brain.</li>
+  <li><strong>מסמכים היסטוריים / שהוחלפו</strong> — משתמשים בהם כדי להבין למה התקבלו החלטות, מה נוסה, מה הוחלף, ואילו ראיות היו קיימות. אין להשתמש בהם כאמת נוכחית אלא אם מסמך נוכחי משחזר במפורש את הכיוון הזה.</li>
+</ol>
+
+<h3>7. סטטוס ידע מול סטטוס Delivery</h3>
+<p>אלה שני דברים שונים. מסמך יכול לתאר החלטת מוצר בשלה בעוד היכולת עצמה עדיין לא נבנתה.</p>
+<p><strong>סטטוס ידע (Knowledge Status)</strong> — דוגמאות: <code class="en">CANONICAL</code>, <code class="en">VALIDATED</code>, <code class="en">WORKING</code>, <code class="en">HYPOTHESIS</code>, <code class="en">SUPERSEDED</code>, <code class="en">HISTORICAL</code>.</p>
+<p><strong>סטטוס Delivery</strong> — דוגמאות: <code class="en">NOT_STARTED</code>, <code class="en">DISCOVERY</code>, <code class="en">BUILDING</code>, <code class="en">PILOT</code>, <code class="en">LIVE</code>.</p>
+<p><strong>לעולם אין להסיק מצב Delivery מבשלות התיעוד.</strong> PRD, HLD, ADR, סכמה או פרוטוטייפ מפורטים אינם מוכיחים שהיכולת קיימת בפועל.</p>
+
+<h3>8. איך להשתמש ב-AI מול ה-Company Brain?</h3>
+<p>כאשר משתמשים בעוזר AI מול הריפו, יש לתת לו את ה-Company Brain כ<strong>מקור האמת העיקרי</strong>. אין לשאול רק <em>"סכם/י את הריפו הזה."</em> יש לתת לו תפקיד ושאלת החלטה.</p>
+<p><strong>שאלת מוצר:</strong> <em>השתמש/י ב-Sigma Company Brain הנוכחי כמקור האמת העיקרי. הסבר/י את [תחום]. הפרד/י בבירור בין Product Truth נוכחי, ידע היסטורי, היפותזות והחלטות פתוחות. לאחר מכן זהה/י את הפעולה המוצרית האחראית הבאה. אין למלא פערים בהנחות.</em></p>
+<p><strong>שאלת אתגור:</strong> <em>אתגר/י את ההצעה הזו מול ה-Sigma Company Brain. זהה/י סתירות מול החלטות קיימות, גבולות אחריות, עקרונות מוצר והיפותזות נוכחיות. הפרד/י בין קונפליקטים אמיתיים לבין שאלות פתוחות בכוונה.</em></p>
+<p><strong>שאלת עיצוב:</strong> <em>הערך/י את החוויה המוצעת מול ה-Sigma Company Brain. זהה/י על איזו שאלה עסקית היא עונה, איזה Workflow בעל-בית עליה, איזה דומיין בעל-בית על המידע, אילו יכולות Sigma היא אמורה לצרוך, והאם ההצעה משכפלת אחריות קיימת.</em></p>
+<p><strong>שאלת המשכיות:</strong> <em>נניח שאני מנהל/ת מוצר חדש/ה ואין לי מסירה בעל-פה. בהתבסס רק על ה-Company Brain, אמור/אמרי לי מה מבוסס, מה פתוח, אילו ראיות קיימות, ומה עלי לעשות הלאה עבור [תחום].</em></p>
+<p>(ראו חלק ב׳ לגרסה ארוכה ומותאמת-תפקיד יותר של ה-Prompt הזה.)</p>
+
+<h3>9. מה לא לעשות?</h3>
+<p>אין:</p>
+<ul>
+  <li>להתייחס לכל מסמך כבעל אותה סמכות,</li>
+  <li>להתחיל מפרוטוטייפ ישן ולהסיק ממנו Product Truth נוכחי,</li>
+  <li>להתייחס ל-IA היסטורי כאל ארכיטקטורה נוכחית,</li>
+  <li>להסיק מימוש מתוך תיעוד,</li>
+  <li>ליצור יכולת חדשה לפני שבודקים אם אחריות Sigma אחרת כבר בעלת-בית עליה,</li>
+  <li>להעביר לוגיקה דומיינית לתוך Zira רק כי זה נוח ל-UI,</li>
+  <li>להשתמש ב-C&amp;M כ-Middleware חובה כאשר אין צורך בסינתזה,</li>
+  <li>להפוך את Commander Space ל-Dashboard כללי,</li>
+  <li>לבלבל בין Notification ל-Attention,</li>
+  <li>לבלבל בין Planning ל-Control,</li>
+  <li>להשוות Planning ל-GANTTIT / Operations Management,</li>
+  <li>להשוות Commander Space ל-Zira,</li>
+  <li>להתייחס ל-Operations Store כאל ה-Workflow של המשתמש,</li>
+  <li>לפתוח מחדש החלטות שהתקבעו בלי ראיה חדשה,</li>
+  <li>לפתור שאלות פתוחות-בכוונה לפני שצורך מוצרי אמיתי מחייב זאת,</li>
+  <li>להוסיף תיעוד רק כדי שהריפו ייראה שלם.</li>
+</ul>
+
+<h3>10. איך נכנס ידע חדש ל-Brain?</h3>
+<p>ה-Company Brain אינו קפוא לאחר v1.0. <strong>ה-Baseline של v1.0 קפוא.</strong> ידע חדש אמור להתפתח דרך Commits חדשים.</p>
+<p>יש להשתמש בזרימה הבאה:</p>
+<pre>Discovery / Prototype / Delivery Evidence
+        ↓
+    Learning
+        ↓
+Product Decision
+        ↓
+Company Brain Update
+        ↓
+Next Product / Prototype / Delivery Iteration</pre>
+<p>אין לשכתב היסטוריה כדי שהחלטות קודמות ייראו כאילו מעולם לא היו קיימות. אם הכיוון משתנה:</p>
+<ol>
+  <li>לשמר את ההחלטה/ההיסטוריה הקודמת,</li>
+  <li>לתעד את הראיה החדשה,</li>
+  <li>לתעד את ההחלטה החדשה,</li>
+  <li>לסמן את הכיוון הישן בהתאם,</li>
+  <li>לעדכן את חומר ה-Current-State.</li>
+</ol>
+
+<h3>11. מתי לעדכן את ה-Company Brain?</h3>
+<p>מעדכנים אותו כאשר משהו משתנה באופן שישפיע מהותית על איך אדם אחר ממשיך את המוצר. דוגמאות: היפותזה מאומתת או נדחית; Product Truth משתנה; אחריות דומיין/מוצר חדשה נכנסת; גבול בעלות משתנה; מתקבלת החלטה ארכיטקטונית משמעותית; Vertical Slice ראשון ננעל; Gate עובר או נכשל; אימות פרוטוטייפ משנה מהותית את כיוון המוצר; סטטוס Delivery משתנה מהותית; החלטה קודמת מוחלפת.</p>
+<p><strong>אין</strong> לעדכן אותו על כל פגישה, שינוי עיצובי קטן, פרט מימוש, או סיעור מוחות.</p>
+
+<h3>12. לפני הוספת מסמך חדש</h3>
+<p>יש לשאול:</p>
+<ul>
+  <li>האם למידע הזה כבר יש בעל-בית/מסמך טבעי?</li>
+  <li>האם זה Product Truth, עדות, חומר Execution, או הקשר היסטורי?</li>
+  <li>האם מנהל/ת מוצר עתידי/ת יזדקק/תזדקק לזה כדי לקבל או להמשיך החלטה?</li>
+  <li>האם אני יוצר/ת מסמך כי לידע יש באמת צורך בבית — או כי יצירת מסמך מרגישה פרודוקטיבית?</li>
+</ul>
+<p>עדיף לחזק מסמך קנוני קיים מאשר ליצור מסמך נוסף, כאשר הידע שייך שם.</p>
+
+<h3>13. הגדרת "גמור" (Definition of Done) לעדכון משמעותי</h3>
+<p>לפני מיזוג שינוי ידע משמעותי לתוך <code class="en">main</code>, יש לוודא:</p>
+<ul>
+  <li><strong>אמת (Truth)</strong> — האם ברור מה עובדה, מה כיוון, מה היפותזה, מה שאלה פתוחה, ומה היסטוריה?</li>
+  <li><strong>בעלות (Ownership)</strong> — האם ברור איזו אחריות מוצר/דומיין בעלת-בית על היכולת או המידע?</li>
+  <li><strong>קשרים (Relationships)</strong> — האם התלויות והגבולות מול תחומי Sigma אחרים מובנים?</li>
+  <li><strong>המשכיות החלטות (Decision continuity)</strong> — אם כיוון קודם השתנה, האם קורא/ת עתידי/ת יכול/ה להבין מה השתנה ולמה?</li>
+  <li><strong>Delivery</strong> — האם נמנענו מלרמז על בשלות מימוש שלא הוכחה?</li>
+  <li><strong>המשכיות (Continuability)</strong> — האם האדם הבא יכול לזהות את הפעולה האחראית הבאה?</li>
+</ul>
+<p>ה-Company Brain מצליח כאשר הוא הופך את ההחלטה האחראית הבאה לקלה יותר — לא כאשר הוא מכיל הכי הרבה מסמכים.</p>
+
+<h3>14. התחלה מהירה לתורם/ת חדש/ה</h3>
+<p>אם יש לך רק 30 דקות:</p>
+<ol>
+  <li>קרא/י את <code class="en">CURRENT-STATE.md</code>.</li>
+  <li>קרא/י את <code class="en">DOC/DOC-001 Sigma Doctrine.md</code>.</li>
+  <li>קרא/י את <code class="en">PR/PR-001 Sigma Product Portfolio.md</code>.</li>
+  <li>בדוק/בדקי את <code class="en">05-DECISIONS/DECISION-LOG.md</code>.</li>
+  <li>קרא/י את ה-README/חומר המוצר עבור הדומיין שלך.</li>
+  <li>שאל/י: <em>על איזו בעיה אני אחראי/ת? מה כבר הוחלט? מה עדיין פתוח? מי בעל-בית על האמת הבסיסית? באילו יכולות Sigma נוספות אני תלוי/ה? מה הפעולה האחראית הבאה?</em></li>
+</ol>
+<p>אם את/ה יכול/ה לענות על השאלות האלה בלי מסירה בעל-פה — ה-Company Brain עושה את העבודה שלו.</p>
+<p>(המשיכו לחלק ב׳ להנחיה ספציפית לתפקיד שלכם.)</p>
+
+<hr>
+
+<h2>חלק ב׳ — מדריך לפי תפקיד</h2>
+<p>תפקידים שונים אמורים לתשאל את ה-Company Brain באופן שונה.</p>
+<p>אין לנסות לקרוא את כל הריפו. מתחילים מההקשר המשותף (חלק א׳ למעלה), ואז ממשיכים לשאלות הרלוונטיות להחלטה שבאחריותכם.</p>
+
+<table>
+  <thead>
+    <tr><th>תפקיד</th><th>מתחילים כאן</th><th>שאלות מרכזיות</th><th>מעמיקים אל</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Product Manager / Product Lead</strong></td><td><span class="en">CURRENT-STATE.md</span> ← Product Portfolio ← Decision Log</td><td>איזו בעיה פותרים? מה מבוסס מול פתוח? מי בעל-בית על ה-Workflow? מי בעל-בית על המידע? אילו ראיות קיימות? מהי הפעולה המוצרית האחראית הבאה?</td><td>מסמכי מוצר/דומיין רלוונטיים, Execution Model, עדות Discovery</td></tr>
+    <tr><td><strong>UX / Product Designer</strong></td><td>Current State ← מסמך מוצר/חוויה רלוונטי ← Decision Log</td><td>על איזו שאלה עסקית החוויה חייבת לענות? מה המשתמש צריך להבין/להחליט/לעשות? מה Product Truth מול עיצוב קודם? אילו אינטראקציות פתוחות לחקירה?</td><td>Commander Space, תחום Planning/Control, פרוטוטייפים היסטוריים כעדות עיצובית</td></tr>
+    <tr><td><strong>Architect</strong></td><td>Doctrine ← Operating Model ← Current State ← ADR/ארכיטקטורה רלוונטיים</td><td>איזה דומיין בעל-בית על האמת הזו? מהם הגבולות? אילו חוזים נדרשים? האם נדרשת סינתזה? האם אנחנו משכפלים יכולת קיימת?</td><td>ADRs, HLDs, חוזים, Shared Capabilities</td></tr>
+    <tr><td><strong>Tech Lead / Developer</strong></td><td>Current State ← README דומיין רלוונטי ← Vertical Slice / DoD</td><td>איזו תוצאה אני מממש/ת? אילו חוזים מחייבים? מה בבעלות מקומית מול חיצונית? אילו החלטות פתוחות באמת חוסמות את ה-Slice הזה?</td><td>API/סכמה/חוזים, HLD, Golden E2E, ADRs רלוונטיים</td></tr>
+    <tr><td><strong>Data Engineer / Data Product</strong></td><td>Current State ← דומיין רלוונטי ← חומר Trust / Evidence / Entity</td><td>מי בעל-בית על מקור המידע? מה עובדתי מול נגזר? איזו Provenance/Freshness נדרשת? איפה צריך לקרות טרנספורמציה או סינתזה?</td><td>Operations Store, Geography, C&amp;M, Trusted Context, Entity Model</td></tr>
+    <tr><td><strong>QA / Validation</strong></td><td>Current State ← Execution Model ← מסמך מוצר/דומיין רלוונטי</td><td>איזו תוצאה עסקית צריכה הוכחה? מהו ה-DoD? אילו ראיות נדרשות ל-Gate? אילו מקרי כשל/גבול חשובים?</td><td>Golden E2E, חוזים, קריטריוני קבלה, ADRs</td></tr>
+    <tr><td><strong>מומחה/ית תפעולי/ת או דומייני/ת</strong></td><td>Current State ← Product Portfolio ← תחום חוויה/מוצר רלוונטי</td><td>האם זה משקף את ה-Workflow התפעולי האמיתי? איזה מידע נדרש בפועל? מי יוצר/מעדכן/מאשר אותו? איפה התהליך הנוכחי נשבר?</td><td>Planning, Control/Event Management, Commander Space, חומר Discovery רלוונטי</td></tr>
+    <tr><td><strong>מנהל/ת מוצר נכנס/ת</strong></td><td><span class="en">CURRENT-STATE.md</span> ← Doctrine ← Portfolio ← Decision Log ← דומיין רלוונטי</td><td>מהי Sigma? מה נכון היום? מה אסור לי לפתוח מחדש? מה היפותזה? מהי הפעולה האחראית הבאה?</td><td>Operating Model, Execution Model, חומר מוצר/דומיין רלוונטי</td></tr>
+  </tbody>
+</table>
+
+<h3>Product Manager / Product Lead</h3>
+<p>התפקיד שלך אינו למצוא את המסמך המפורט ביותר. התפקיד שלך הוא להבין את ה-Product Truth הנוכחי ולזהות את הפעולה המוצרית האחראית הבאה.</p>
+<p><strong>לשאול:</strong> איזו בעיה עסקית פותרים? על איזו שאלה עסקית התחום הזה עונה? מה כבר מבוסס? מה היפותזה? מה נשאר פתוח בכוונה? אילו ראיות הביאו אותנו לכאן? אילו החלטות אסור לפתוח מחדש בלי ראיה חדשה? מי בעל-בית על ה-Workflow? מי בעל-בית על המידע הבסיסי? אילו יכולות Sigma נוספות נדרשות? מהו ה-Vertical Slice המשמעותי הקטן ביותר? מה עלינו ללמוד לפני התחייבות? מהי הפעולה האחראית הבאה?</p>
+<p><strong>לשים לב:</strong> אין לבלבל מסמך בשל עם מוצר בשל. אין להפוך Discovery פתוח להיקף מוקדם מדי. אין לפתור תלות עד שיש Slice אמיתי שתלוי בה.</p>
+
+<h3>UX / Product Designer</h3>
+<p>יש להשתמש ב-Company Brain כדי להבין <strong>מה החוויה צריכה להשיג</strong>, לא כדי לגלות מפרט מסך קפוא. פרוטוטייפים היסטוריים הם עדות עיצובית — לא UX נוכחי אוטומטית.</p>
+<p><strong>לשאול:</strong> על איזו שאלה עסקית המשתמש מנסה לענות? מה המשתמש צריך להבין? מה דורש קשב? מה דורש החלטה, אישור או פעולה? איזה הקשר/עדות נדרשים? מה המשתמש אמור להיות מסוגל לעשות מהחוויה הזו? איזה Workflow בסיסי בעל-בית על הפעולה? איזה דומיין בעל-בית על המידע המוצג? איזו יכולת קיימת אפשר להרכיב במקום לעצב מחדש? איזו חשיבה קודמת מהפרוטוטייפ עדיין שימושית? אילו חלקים בפרוטוטייפ הוחלפו במפורש? אילו הנחות הפרוטוטייפ הזה אמור לאמת?</p>
+<h4>עבור Commander Space במיוחד</h4>
+<p>מתחילים תמיד ב: <strong>מה דורש את המשתמש הזה?</strong></p>
+<p>ואז שואלים: למה זה דורש אותו/אותה? מה השתנה? מה הם צריכים להבין? האם באמת יש החלטה? האם באמת יש המלצה? האם נדרש אישור? אילו ראיות תומכות במידע? מה אמור לקרות אחרי הפעולה?</p>
+<p>לזכור: <strong>Notification ≠ Attention.</strong> <strong>Ranking ≠ Recommendation.</strong> <strong>Commander Space ≠ Dashboard קבוע.</strong></p>
+
+<h3>Architect</h3>
+<p>יש להשתמש ב-Brain כדי להגן על גבולות אחריות ולאפשר Slices מוצריים — לא כדי למקסם שלמות ארכיטקטונית.</p>
+<p><strong>לשאול:</strong> איזה דומיין בעל-בית על האמת הזו? האם זהו מצב עובדתי דומייני? חישוב/עדות מרחבית? משמעות חוצת-דומיינים? התנהגות חוויה? איזו מערכת היא ה-Source of Truth? איזה מידע צריך להיות מוזכר (Referenced) ולא מועתק? איזה חוזה מחבר בין האחריויות? האם C&amp;M באמת צריך להיות מעורב? האם Zira יכול לצרוך עובדות דומיין מהימנות ישירות? האם אנחנו מכניסים לוגיקה דומיינית לתוך שכבת החוויה? האם אנחנו מתכננים תשתית כי Vertical Slice אמיתי דורש אותה?</p>
+<p><strong>לשים לב:</strong> ארכיטקטורה אמורה לתמוך בגבולות מוצר. אסור לה ליצור גבולות מוצר חדשים בטעות.</p>
+
+<h3>Tech Lead / Developer</h3>
+<p>מתחילים מהתוצאה העסקית לפני קריאת ה-API.</p>
+<p><strong>לשאול:</strong> איזה Vertical Slice אני מממש/ת? איזו תוצאה עסקית/משתמש חייבת לעבוד מקצה-לקצה? מה הרכיב שלי בעל-בית עליו? מה הוא חייב שלא להיות בעל-בית עליו? איזה חוזה מחייב? מי הצרכנים/מפיקים האמיתיים? אילו מזהים חייבים להישאר יציבים? איזו התנהגות Provenance/Freshness/Audit נדרשת? אילו מצבי כשל חשובים? איזו החלטה פתוחה באמת חוסמת את המימוש הזה? אילו ראיות מוכיחות השלמה?</p>
+<p><strong>לשים לב:</strong> אין לממש הנחה רק כי השאלה המוצרית עדיין לא נענתה. יש להסלים את ההחלטה המוצרית החסרה במקום.</p>
+
+<h3>Data Engineer / Data Product</h3>
+<p>יש להשתמש ב-Company Brain כדי להבין את הסמנטיקה והבעלות על מידע לפני תכנון Pipelines.</p>
+<p><strong>לשאול:</strong> איזה מושג מהעולם האמיתי המידע הזה מייצג? מי בעל-בית על אובייקט המקור? מהו הייצוג הארגוני הקנוני? מה עובדתי? מה נגזר? מה פרשנות חוצת-דומיינים? איזו Provenance חייבת ללוות את המידע? עד כמה הוא צריך להיות עדכני? האם זה Owned, Materialized External, Federated/Reference או Derived factual state? האם זה שייך ל-Operations Store, Geography, C&amp;M או מקום אחר? האם מצב מתוכנן ומצב בפועל נשמרים בנפרד? איזה מידע צריך להישאר במערכת המקור המקצועית?</p>
+<p><strong>לשים לב:</strong> מודל מידע נוח אינו אוטומטית מודל הבעלות הנכון.</p>
+
+<h3>QA / Validation</h3>
+<p>לוודא את התוצאה העסקית ואת גבולות המערכת — לא רק התנהגות פיצ׳רים.</p>
+<p><strong>לשאול:</strong> מה חייב להיות נכון כדי שה-Slice הזה ייחשב מוצלח? מהי התוצאה העסקית? מהו ה-DoD המפורש? אילו ראיות נדרשות עבור ה-Gate? האם אנחנו משתמשים במידע/מפיקים אמיתיים היכן שנדרש? האם מצב מתוכנן ומצב בפועל ניתנים להבחנה? האם Provenance גלוי? האם כשלים מטופלים ביושר? האם מצבים ישנים/חסרים/סותרים מיוצגים נכון? האם החוויה מרמזת בטעות על משמעות או ביטחון שהמידע הבסיסי לא תומך בהם? האם המימוש חצה גבול מוצר/דומיין שלא היה אמור להיות בעל-בית עליו?</p>
+<h4>גישת ה-Gate</h4>
+<p>Gate שואל: <strong>האם יש לנו מספיק ראיות כדי להמשיך באחריות?</strong> ולא: <strong>האם סיימנו את כל המשימות?</strong></p>
+
+<h3>מומחה/ית תפעולי/ת או דומייני/ת</h3>
+<p>את/ה אחד המקורות החשובים ביותר להבחנה בין המוצר המכוון לבין ה-Workflow התפעולי האמיתי. אין לבחון רק אם המינוח "נשמע נכון". יש לאתגר את ההתנהגות בפועל.</p>
+<p><strong>לשאול:</strong> הראה/י לי איפה זה קורה ב-Workflow האמיתי. מי מתחיל את זה? מה מפעיל את זה? איזה מידע מגיע ראשון? מאיפה המידע הזה מגיע? מי מעדכן אותו? מי סומך עליו? מה קורה כשהוא משתנה? מי צריך לדעת? מי יכול להחליט? מי יכול לאשר? מה קורה אם אף אחד לא פועל? איפה עדיין נדרשים שקופיות (מצגות), WhatsApp, שיחות טלפון או תיאום ידני? איזה מידע את/ה אוסף/ת ידנית היום? איזה חלק מה-SOP חי בראש של אנשים או במסמכים חיצוניים? מתי ה-Workflow נחשב גמור? מה צריך לשרוד אחרי שהוא נגמר?</p>
+<h4>בעת סקירת פרוטוטייפ</h4>
+<p>אין לענות רק: <em>"את/ה אוהב/ת את זה?"</em></p>
+<p>במקום זאת יש לשאול: <em>"האם היית יכול/ה לנהל את המצב האמיתי עם זה?" "מה עדיין היית צריך/ה מחוץ למוצר?" "מה חסר כדי שתסמוך/י על זה?" "מה היה מונע ממך לפעול?"</em></p>
+
+<h3>מנהל/ת מוצר נכנס/ת</h3>
+<p>המטרה הראשונה שלך אינה ללמוד כל פרט. היא לבנות מודל מנטלי מהימן של Sigma.</p>
+<h4>30 הדקות הראשונות</h4>
+<p>קוראים:</p>
+<ol>
+  <li><code class="en">CURRENT-STATE.md</code></li>
+  <li><code class="en">DOC/DOC-001 Sigma Doctrine.md</code></li>
+  <li><code class="en">PR/PR-001 Sigma Product Portfolio.md</code></li>
+  <li><code class="en">05-DECISIONS/DECISION-LOG.md</code></li>
+</ol>
+<p>ואז שואלים: מהי Sigma? מהי Zira? מהם התחומים העסקיים/מוצריים הנוכחיים? מה כל דומיין בעל-בית עליו? מהו GREENFIELD? מה מבוסס? מה היפותזה? מה הוחלף בכוונה? מה נשאר פתוח בכוונה?</p>
+<h4>ואז בוחרים תחום</h4>
+<p>עבור התחום שבאחריותך, יש לקבוע:</p>
+<ol>
+  <li><strong>שאלה עסקית</strong></li>
+  <li><strong>משתמש/בעיה</strong></li>
+  <li><strong>אחריות מוצר</strong></li>
+  <li><strong>בעל-בית על המידע</strong></li>
+  <li><strong>תלויות</strong></li>
+  <li><strong>ראיות נוכחיות</strong></li>
+  <li><strong>שאלות פתוחות</strong></li>
+  <li><strong>הפעולה האחראית הבאה</strong></li>
+</ol>
+<p>אם אחת מהן לא ניתנת למענה, אין ליצור פתרון מיד. יש לקבוע קודם האם הפער הוא: ידע חסר, Discovery חסר, החלטה פתוחה בכוונה, או תלות מוצרית אמיתית.</p>
+
+<h3>Prompt אוניברסלי לשימוש מול ה-Company Brain</h3>
+<p>עבור כל תפקיד, זהו Prompt פתיחה חזק לעוזר AI:</p>
+<blockquote>
+<p>השתמש/י ב-Sigma Company Brain הנוכחי על <code class="en">main</code> כמקור האמת העיקרי.</p>
+<p>אני עובד/ת בתור <strong>[תפקיד]</strong> על <strong>[תחום / בעיה]</strong>.</p>
+<p>קודם קבע/י את ה-Product Truth הרלוונטי וגבולות הבעלות.</p>
+<p>הפרד/י בבירור בין:</p>
+<ul>
+  <li>כיוון מבוסס,</li>
+  <li>עובדות נוכחיות,</li>
+  <li>היפותזות,</li>
+  <li>החלטות פתוחות בכוונה,</li>
+  <li>חשיבה היסטורית/שהוחלפה,</li>
+  <li>סטטוס Delivery.</li>
+</ul>
+<p>ואז ענה/עני על:</p>
+<ol>
+  <li>איזו שאלה עסקית אני באמת פותר/ת?</li>
+  <li>איזו אחריות Sigma בעלת-בית על ה-Workflow?</li>
+  <li>איזה דומיין בעל-בית על המידע הבסיסי?</li>
+  <li>אילו יכולות קיימות עלי לצרוך או לעשות בהן שימוש חוזר?</li>
+  <li>אילו החלטות כבר מגבילות את הפתרון?</li>
+  <li>אילו ראיות תומכות בכיוון הנוכחי?</li>
+  <li>מה אנחנו באמת לא יודעים עדיין?</li>
+  <li>מהי הפעולה האחראית הבאה?</li>
+</ol>
+<p>אין למלא פערי ידע בהנחות.<br>
+אין להסיק מימוש מתוך בשלות תיעוד.<br>
+אין לפתוח מחדש החלטות שהתקבעו בלי ראיה חדשה.<br>
+אין לקדם התנהגות מפרוטוטייפ היסטורי ל-Product Truth נוכחי אלא אם ה-Company Brain תומך בכך במפורש.</p>
+</blockquote>
+
+<h3>עקרון-העל של מדריך התפקידים</h3>
+<p>כל תפקיד אמור לצאת מה-Company Brain עם תוצר שונה:</p>
+<ul>
+  <li><strong>Product</strong> ← ההחלטה המוצרית או מטרת הלמידה הבאה.</li>
+  <li><strong>UX</strong> ← השאלה שהחוויה חייבת לענות עליה, וההנחות לאימות.</li>
+  <li><strong>Architecture</strong> ← גבול האחריות הנכון והחוזים הנדרשים.</li>
+  <li><strong>Engineering</strong> ← Slice בר-מימוש עם בעלות ברורה ו-DoD.</li>
+  <li><strong>Data</strong> ← סמנטיקה מהימנה, Provenance ובעלות.</li>
+  <li><strong>QA</strong> ← ראיה שהתוצאה העסקית והגבולות המכוונים אכן מתקיימים.</li>
+  <li><strong>Domain Expert</strong> ← אישור או תיקון של ה-Workflow התפעולי האמיתי.</li>
+  <li><strong>מנהל/ת מוצר נכנס/ת</strong> ← מספיק הבנה כדי להמשיך בלי מסירה בעל-פה.</li>
+</ul>
+<p>כך אותו Company Brain הופך למערכת מוצר עובדת — לא לריפו תיעוד.</p>
+
+<footer>
+  <p><strong>Baseline:</strong> ענף רשמי — <code class="en">main</code> · Baseline מאושר — <code class="en">company-brain-v1.0</code> · Commit — <code class="en">16f93e589099dbe368ca2eb1e66f9c7b456e1bb6</code></p>
+  <p>ה-Baseline מייצג את מצב ה-Company Brain שאושר רשמית למסירה. Discovery, איטרציות פרוטוטייפ, אימות ולמידות Delivery עתידיות אמורים להתפתח דרך Commits חדשים לאחר ה-Baseline הזה.</p>
+  <p>מסמך זה הוא עותק נלווה בעברית. המקור הקנוני: <code class="en">Sigma-Knowledge-Base/COMPANY-BRAIN-GUIDE.md</code>.</p>
+</footer>
+
+</body>
+</html>
